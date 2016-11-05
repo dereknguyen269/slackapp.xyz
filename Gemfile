@@ -43,6 +43,15 @@ gem 'react-rails'
 gem 'sprockets-coffee-react'
 gem 'js-routes'
 
+# Config
+gem 'figaro'
+
+# Third party
+gem 'rails_db'
+
+# Search
+gem "scoped_search"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

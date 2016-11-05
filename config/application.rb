@@ -34,5 +34,6 @@ module SlackBotOnRails
 
     # React config
     config.react.addons = true
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
