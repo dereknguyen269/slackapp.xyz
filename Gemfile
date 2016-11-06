@@ -50,6 +50,9 @@ gem 'figaro'
 gem 'rails_db'
 gem 'appsignal'
 
+# Calculate
+gem 'dentaku'
+
 # Search
 gem "scoped_search"
 

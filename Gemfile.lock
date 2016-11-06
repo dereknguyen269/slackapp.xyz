@@ -63,6 +63,7 @@ GEM
     concurrent-ruby (1.0.0)
     connection_pool (2.2.0)
     debug_inspector (0.0.2)
+    dentaku (2.0.9)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.0.8)
@@ -275,6 +276,7 @@ DEPENDENCIES
   appsignal
   byebug
   coffee-rails (~> 4.1.0)
+  dentaku
   figaro
   haml-rails
   jbuilder (~> 2.0)
