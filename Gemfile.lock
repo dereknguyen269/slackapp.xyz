@@ -37,6 +37,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    appsignal (2.0.1)
+      rack
+      thread_safe
     arel (6.0.3)
     babel-source (5.8.34)
     babel-transpiler (0.7.0)
@@ -269,6 +272,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appsignal
   byebug
   coffee-rails (~> 4.1.0)
   figaro

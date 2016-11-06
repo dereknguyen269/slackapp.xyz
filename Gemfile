@@ -48,6 +48,7 @@ gem 'figaro'
 
 # Third party
 gem 'rails_db'
+gem 'appsignal'
 
 # Search
 gem "scoped_search"
