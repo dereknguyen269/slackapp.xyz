@@ -53,9 +53,6 @@ gem 'appsignal'
 # Calculate
 gem 'dentaku'
 
-# Google Search
-gem 'google-search', '~> 1.0', '>= 1.0.3'
-
 # Search
 gem "scoped_search"
 

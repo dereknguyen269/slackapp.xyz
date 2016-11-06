@@ -7,7 +7,6 @@ require ::File.expand_path('../lib/slack_ruby_bot/commands/calculate', __FILE__)
 require ::File.expand_path('../lib/slack_ruby_bot/commands/hi', __FILE__)
 require ::File.expand_path('../lib/slack_ruby_bot/commands/hello', __FILE__)
 require ::File.expand_path('../lib/slack_ruby_bot/commands/help', __FILE__)
-require ::File.expand_path('../lib/slack_ruby_bot/commands/search', __FILE__)
 require ::File.expand_path('../lib/slack_ruby_bot/support/commands_helper.rb', __FILE__)
 
 Thread.abort_on_exception = true

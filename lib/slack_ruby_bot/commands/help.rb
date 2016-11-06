@@ -1,29 +1,24 @@
 module SlackRubyBot
   module Commands
-    class HelpCommand < Base
+    class Help < Base
       command 'help' do |client, data, match|
-        command = '-cmd'
-
-        text = general_text if command == '-cmd'
-        text = 'Please use `help -cmd`' if command != '-cmd'
-
-        client.say(channel: data.channel, text: text, gif: 'command')
-      end
-
-      class << self
-        private
-
-        def general_text
-          <<TEXT
+        if match.names.include?('expression')
+          if match[:expression] == '-cmd'
+            text =
+            <<TEXT
 Commands:
-- say `word`
-- `What time is it?`
-- `Where are you from ?`
-- ask `An question`
+- ironman `say word`
+- ironman `What time is it?`
+- ironman `Where are you from ?`
+- ironman `ask An question`
 
 Please ask with Libra. Thanks :)
 TEXT
+          end
+        else
+          text = 'Please use `help -cmd`'
         end
+        client.say(channel: data.channel, text: text, gif: 'command')
       end
     end
   end
