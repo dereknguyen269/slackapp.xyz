@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get '/', to: redirect('/dashboard')
     resources :dashboard, only: [:index]
     resources :messages
-    post '/', to 'dashboard#create'
+    post '/', to: 'dashboard#create'
     get '/create', to: 'dashboard#create'
   end
 end
