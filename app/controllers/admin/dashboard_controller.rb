@@ -13,6 +13,13 @@ class Admin::DashboardController < Admin::BaseController
     redirect_to action: :index
   end
 
+  def auto
+    message = params[:message]
+    channel = params[:channel]
+    @client.chat_postMessage(channel: "##{channel}", text: message, as_user: true)
+    render json: true
+  end
+
   private
 
   def prepare_client

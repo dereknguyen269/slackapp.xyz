@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :messages
     post '/', to: 'dashboard#create'
-    get '/create', to: 'dashboard#create'
+    get '/auto', to: 'dashboard#auto'
   end
 end
 
