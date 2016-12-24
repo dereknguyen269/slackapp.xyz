@@ -1,2 +1,3 @@
 SECRET_KEY_BASE: 28ab944719131e3ddece6349af54c13fcd0e67d6835c4aa132df94e3c9c25f09bceb7fc4d9b581f625a06bd1cc3e9f78fa92d7e3a63abcaea8edb377804b822e
 SLACK_API_TOKEN: xoxb-100792143650-0xMV5dJE95CaI9asdG048Eud
+WEB_URL: https://safe-beyond-85886.herokuapp.com/admin/auto
