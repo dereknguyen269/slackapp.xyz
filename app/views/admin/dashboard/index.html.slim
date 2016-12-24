@@ -1,0 +1,4 @@
+= simple_form_for :message, method: :post do |f|
+  = f.input :channel, collection: @channels.map{ |channel| [channel.name, "##{channel.name}"] }.concat([['wtf', '#wtf']])
+  = f.input :message, input_html: { class: 'form-control' }
+  = f.button :submit

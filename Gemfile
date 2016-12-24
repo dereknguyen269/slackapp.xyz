@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7.1'
@@ -34,14 +34,33 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Slack Bot
 gem 'slack-ruby-bot'
+gem 'celluloid-io'
+gem 'slack-ruby-client'
 
 # HAML
 gem 'haml-rails'
+
+# Slim
+gem 'slim-rails'
+
+gem 'kaminari'
 
 # React
 gem 'react-rails'
 gem 'sprockets-coffee-react'
 gem 'js-routes'
+
+# Form builders & helpers
+gem 'simple_form'
+gem 'cocoon'
+
+# Front-end
+gem 'bootstrap-sass', '~> 3.3.6'
+
+# User authentication and authorization
+gem 'devise'
+gem 'rolify'
+gem 'pundit'
 
 # Config
 gem 'figaro'
@@ -56,6 +75,8 @@ gem 'dentaku'
 # Search
 gem "scoped_search"
 
+gem 'annotate'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -69,6 +90,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 gem 'nokogiri', '>= 1.6.8'
