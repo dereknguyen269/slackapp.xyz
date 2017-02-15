@@ -265,7 +265,7 @@ GEM
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
-    slack-ruby-bot (0.10.0)
+    slack-ruby-bot (0.10.1)
       hashie
       slack-ruby-client (>= 0.6.0)
     slack-ruby-client (0.7.9)
