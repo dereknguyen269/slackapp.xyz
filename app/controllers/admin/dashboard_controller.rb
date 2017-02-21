@@ -9,7 +9,9 @@ class Admin::DashboardController < Admin::BaseController
     message = message_params[:message]
     channel = message_params[:channel]
     channel = '#test' if channel.blank?
-    @client.chat_postMessage(channel: channel text: message, as_user: true) unless message.blank?
+    if !message.blank?
+      @client.chat_postMessage(channel: channel, text: message, as_user: true)
+    end
     redirect_to action: :index
   end
 
