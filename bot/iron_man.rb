@@ -1,3 +1,7 @@
+require 'uri'
+require 'nokogiri'
+require 'open-uri'
+
 class IronMan < SlackRubyBot::Bot
   @id = 0
 
@@ -27,6 +31,20 @@ class IronMan < SlackRubyBot::Bot
       message = cmds.sample.message
     end
     client.say(channel: data.channel, text: message)
+  end
+
+  command 'search' do |client, data, match|
+    Rails.cache.write next_id, { text: match['expression'] }
+    term = match['expression']
+    text = "https://www.google.com.vn/#search?q=#{URI.encode(term)}"
+    client.say(channel: data.channel, text: text)
+  end
+
+  command 'photo' do |client, data, match|
+    Rails.cache.write next_id, { text: match['expression'] }
+    term = match['expression']
+    text = "https://www.google.com.vn/search?q=#{URI.encode(term)}&source=lnms&tbm=isch"
+    client.say(channel: data.channel, text: text)
   end
 
 end
