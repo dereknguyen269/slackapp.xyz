@@ -6,8 +6,8 @@ require 'rake'
 namespace :send_photo_to_channel do
   task :run => :environment do
     photo = get_photo
-    if photo.nil?
-      false
+    if photo.blank?
+      photo = 'http://68.media.tumblr.com/ecc20a97d9de4d23c59180844b29ce78/tumblr_o96ty07hHF1qadv0oo1_500.jpg'
     end
     uri = URI.parse("#{ENV['WEB_URL']}/admin/auto/")
     http = Net::HTTP.new(uri.host, uri.port)
@@ -35,15 +35,16 @@ namespace :send_photo_to_channel do
     page_number = page_need_crawler
     if page_number
       doc = get_doc("http://xkcn.info/page/#{page_number}")
-      doc.css('.post-img').each do |item|
-        photo << item['src']
+      doc.css('article.post.photo').each do |item|
+        img = item.at_css('img')
+        photo << img['src']
       end
     else
       index = 1
       flag = true
       while flag do
         doc = get_doc("http://xkcn.info/page/#{index}")
-        doc.css('.post-img').each do |item|
+        doc.css('article.post.photo').each do |item|
           photo << item['src']
         end
         index += 1
