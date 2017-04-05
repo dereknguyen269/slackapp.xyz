@@ -35,7 +35,7 @@ namespace :send_photo_to_channel do
     page_number = page_need_crawler
     if page_number
       doc = get_doc("http://xkcn.info/page/#{page_number}")
-      doc.css('article.post.photo').each do |item|
+      doc.css('.post-photo').each do |item|
         img = item.at_css('img')
         photo << img['src']
       end

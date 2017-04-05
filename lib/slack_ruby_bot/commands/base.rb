@@ -95,7 +95,6 @@ module SlackRubyBot
           text = data.text
           return text unless direct_message?(data) && message_from_another_user?(data)
           return text if bot_mentioned_in_message?(text, client.names)
-          return text if bot_mentioned_first_in_message?(client.names, text)
           ["#{client.name} #{text}", text]
         end
 
@@ -108,11 +107,6 @@ module SlackRubyBot
         end
 
         def bot_mentioned_in_message?(text, bot_names)
-          bot_names = bot_names.join('|')
-          !!text.downcase.match(/\A(#{bot_names})\s|\A(#{bot_names})\z/)
-        end
-
-        def bot_mentioned_first_in_message?(bot_names, text)
           bot_names = bot_names.join('|')
           !!text.downcase.match(/\A(#{bot_names})\s|\A(#{bot_names})\z/)
         end
