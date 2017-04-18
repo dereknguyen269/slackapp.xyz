@@ -115,8 +115,8 @@ GEM
     figaro (1.1.1)
       thor (~> 0.14)
     gli (2.16.0)
-    globalid (0.3.7)
-      activesupport (>= 4.1.0)
+    globalid (0.4.0)
+      activesupport (>= 4.2.0)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
