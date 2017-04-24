@@ -11,5 +11,7 @@
 <%= yield %>
 
 </body>
+<script type="text/javascript">
+  if (window.location.hash == '#_=_')window.location.hash = ''; //this script removes the #_=_ from the url which is appended by facebook after login
 </script>
 </html>
