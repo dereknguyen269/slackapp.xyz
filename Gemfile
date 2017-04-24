@@ -61,6 +61,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'rolify'
 gem 'pundit'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Config
 gem 'figaro'
