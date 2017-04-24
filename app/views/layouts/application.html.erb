@@ -13,11 +13,9 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function () {
-  <% if current_page?(root_path) %>
-    if (window.location.href.indexOf('#_=_') > 0) {
-      window.location = window.location.href.replace(/#.*/, '');
-    }
-  <% end %>
+  if (window.location.href.indexOf('#_=_') > 0) {
+    window.location = window.location.href.replace(/#.*/, '');
+  }
 });
 </script>
 </html>
