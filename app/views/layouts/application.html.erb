@@ -12,6 +12,9 @@
 
 </body>
 <script type="text/javascript">
-  if (window.location.hash == '#_=_')window.location.hash = ''; //this script removes the #_=_ from the url which is appended by facebook after login
+  if (window.location.hash == '#_=_') {
+    // window.location.hash = ''; //this script removes the #_=_ from the url which is appended by facebook after login
+    history.pushState("", document.title, window.location.href.replace(/\#(.+)/, '').replace(/http(s?)\:\/\/([^\/]+)/, '') )
+  }
 </script>
 </html>
