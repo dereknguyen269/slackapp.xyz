@@ -12,9 +12,12 @@
 
 </body>
 <script type="text/javascript">
-  $(document).ready(function () {
-  if (window.location.href.indexOf('#_=_') > 0) {
-  window.location = window.location.href.replace(/#.*/, '');
-  }});
+$(document).ready(function () {
+  <% if current_page?(controller: 'home', action: 'index') %>
+    if (window.location.href.indexOf('#_=_') > 0) {
+      window.location = window.location.href.replace(/#.*/, '');
+    }
+  <% end %>
+});
 </script>
 </html>
