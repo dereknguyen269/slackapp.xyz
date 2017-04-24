@@ -13,7 +13,7 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function () {
-  <% if current_page?(controller: 'home', action: 'index') %>
+  <% if user_signed_in? && current_page?(controller: 'home', action: 'index') %>
     if (window.location.href.indexOf('#_=_') > 0) {
       window.location = window.location.href.replace(/#.*/, '');
     }
