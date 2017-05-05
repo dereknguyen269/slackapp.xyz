@@ -41,7 +41,7 @@ gem 'slack-ruby-client'
 gem 'haml-rails'
 
 # Slim
-gem 'slim-rails'
+gem 'slim-rails', '~> 3.1.0'
 
 gem 'kaminari'
 
