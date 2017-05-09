@@ -43,7 +43,7 @@ GEM
       rack
       thread_safe
     arel (6.0.4)
-    autoprefixer-rails (7.0.0)
+    autoprefixer-rails (7.0.1)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
