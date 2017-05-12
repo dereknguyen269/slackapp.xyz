@@ -82,7 +82,7 @@ GEM
       timers (>= 4.1.1)
     celluloid-supervision (0.20.6)
       timers (>= 4.1.1)
-    cocoon (1.2.9)
+    cocoon (1.2.10)
     codemirror-rails (5.16.0)
       railties (>= 3.0, < 6.0)
     coderay (1.1.1)
@@ -237,7 +237,7 @@ GEM
       i18n
       polyamorous (~> 1.3)
     rdoc (4.3.0)
-    react-rails (2.1.0)
+    react-rails (2.2.0)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
