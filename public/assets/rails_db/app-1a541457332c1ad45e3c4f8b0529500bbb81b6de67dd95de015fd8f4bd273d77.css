@@ -1,0 +1,113 @@
+/* line 1, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+footer {
+  padding: 0;
+}
+
+/* line 5, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+body {
+  height: auto;
+}
+
+/* line 9, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.clear {
+  clear: both;
+}
+
+/* line 13, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.sub-nav {
+  background: #f2f2f2;
+  padding: 10px 10px 10px 0;
+}
+
+/* line 18, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+table {
+  border-spacing: 2px;
+}
+
+/* line 22, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+table th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+/* line 28, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+table th, table td {
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+/* line 33, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+table td.text {
+  white-space: normal;
+}
+
+/* line 37, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.scrollable {
+  overflow: auto;
+}
+/* line 39, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.scrollable table {
+  min-width: 99%;
+}
+
+/* line 44, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.main_nav {
+  padding-top: 30px;
+}
+
+/* line 48, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.panel.execute_panel {
+  padding-bottom: 5px;
+}
+
+/* line 52, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.sql_history_items {
+  max-height: 450px;
+}
+
+/* line 56, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.red {
+  color: red;
+}
+
+/* line 60, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.yellow {
+  color: #ffba00;
+}
+
+/* line 64, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.warning.label a {
+  color: white;
+}
+
+/* line 68, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.expanded .collapse {
+  display: inline;
+}
+
+/* line 72, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.expanded .expand {
+  display: none;
+}
+
+/* line 76, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.collapsed .collapse {
+  display: none;
+}
+
+/* line 79, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.collapsed .expand {
+  display: inline;
+}
+
+/* line 83, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.sql_exp_col {
+  padding-top: 8px;
+  padding-left: 26px;
+}
+
+/* line 88, /Users/nguyenquan/.rvm/gems/ruby-2.3.3@slack-bot/gems/rails_db-1.5.0/app/assets/stylesheets/rails_db/app.scss */
+.panel.no_bottom_padding {
+  padding-bottom: 0;
+}
