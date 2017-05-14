@@ -55,6 +55,8 @@ gem 'simple_form'
 gem 'cocoon'
 
 # Front-end
+gem 'twitter-bootstrap-rails'
+gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # User authentication and authorization

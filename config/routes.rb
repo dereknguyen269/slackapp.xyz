@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
-  root 'home#index'
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+  root 'admin/dashboard#index'
   resources :messages, only: :index
   namespace :admin, path: 'admin' do
     root 'dashboard#index'

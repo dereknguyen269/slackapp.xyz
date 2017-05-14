@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+unless User.find_by(email: 'admin@slack-bot.com').present?
+  print 'Seeding Admin...'
+  User.create!(email: 'admin@slack-bot.com', password: '123123123')
+  puts ' Done'
+end

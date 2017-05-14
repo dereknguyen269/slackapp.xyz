@@ -11,6 +11,7 @@ class Admin::DashboardController < Admin::BaseController
     channel = '#test' if channel.blank?
     if !message.blank?
       @client.chat_postMessage(channel: channel, text: message, as_user: true)
+      flash[:notice] = "Message was successfully send to channel: #{channel}"
     end
     redirect_to action: :index
   end
