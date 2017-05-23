@@ -3,7 +3,7 @@ class Admin::BaseController < ApplicationController
   layout 'application'
 
   def check_authenticate
-    if params[:message][:via] == 'task'
+    if params[:message] && params[:message][:via] == 'task'
       true
     else
       authenticate_user!
