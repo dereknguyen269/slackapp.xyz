@@ -9,14 +9,14 @@ namespace :send_photo_to_channel do
     if photo.blank?
       photo = 'http://68.media.tumblr.com/ecc20a97d9de4d23c59180844b29ce78/tumblr_o96ty07hHF1qadv0oo1_500.jpg'
     end
-    uri = URI.parse("#{ENV['WEB_URL']}/admin/auto/")
+    uri = URI.parse("#{ENV['WEB_URL']}/admin")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    request = Net::HTTP::Get.new(uri.request_uri)
+    request = Net::HTTP::Post.new(uri.request_uri)
     desc = PhotoDescription.all.count > 0 ? PhotoDescription.all.sample.description : ('Yêu cmnr :beauty:' || 'Chỉ là test thôi mà :joy:')
     message = "#{desc} #{photo}"
-    request.set_form_data(channel: 'wtf', message: message)
+    request.set_form_data(channel: 'wtf', message: message, via: 'task')
     response = http.request(request)
   end
 
