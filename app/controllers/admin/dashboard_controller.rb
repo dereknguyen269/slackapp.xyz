@@ -1,5 +1,6 @@
 class Admin::DashboardController < Admin::BaseController
   before_action :prepare_client
+  skip_before_filter :verify_authenticity_token, only: :create
 
   def index
     @channels = @client.channels_list.channels

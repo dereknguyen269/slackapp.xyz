@@ -16,7 +16,7 @@ namespace :send_photo_to_channel do
     request = Net::HTTP::Post.new(uri.request_uri)
     desc = PhotoDescription.all.count > 0 ? PhotoDescription.all.sample.description : ('Yêu cmnr :beauty:' || 'Chỉ là test thôi mà :joy:')
     message = "#{desc} #{photo}"
-    request.set_form_data(channel: 'wtf', message: message, via: 'task')
+    request.set_form_data('message[channel]' => 'wtf', 'message[message]' => message, via: 'task')
     response = http.request(request)
   end
 

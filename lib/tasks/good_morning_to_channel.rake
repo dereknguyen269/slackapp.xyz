@@ -8,7 +8,7 @@ namespace :good_morning_to_channel do
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::POST.new(uri.request_uri)
     message = "Good morning everybody :sun_with_face:"
-    request.set_form_data(channel: 'wtf', message: message, via: 'task')
+    request.set_form_data('message[channel]' => 'wtf', 'message[message]' => message, via: 'task')
     response = http.request(request)
   end
 end
