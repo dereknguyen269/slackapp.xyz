@@ -31,11 +31,12 @@ namespace :send_photo_to_channel do
   end
 
   def from_xkcn
+    attr_photo = PhotoAttr.find_or_create_by!(name: 'article.photo', site: 'xkcn.info')
     photo = []
     page_number = page_need_crawler
     if page_number
       doc = get_doc("http://xkcn.info/page/#{page_number}")
-      doc.css('.post-photo').each do |item|
+      doc.css(attr_photo.name).each do |item|
         img = item.at_css('img')
         photo << img['src']
       end
@@ -44,7 +45,7 @@ namespace :send_photo_to_channel do
       flag = true
       while flag do
         doc = get_doc("http://xkcn.info/page/#{index}")
-        doc.css('article.post.photo').each do |item|
+        doc.css(attr_photo.name).each do |item|
           photo << item['src']
         end
         index += 1
