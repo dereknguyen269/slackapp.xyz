@@ -1,0 +1,23 @@
+h1 Listing admin_photo_attrs
+
+table
+  thead
+    tr
+      th width="200px" Name
+      th width="200px" Site
+      th width="50px"
+      th width="50px"
+      th width="50px"
+
+  tbody
+    - @admin_photo_attrs.each do |admin_photo_attr|
+      tr
+        td = admin_photo_attr.name
+        td = admin_photo_attr.site
+        td = link_to 'Show', admin_photo_attr
+        td = link_to 'Edit', edit_admin_photo_attr_path(admin_photo_attr)
+        td = link_to 'Destroy', admin_photo_attr, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Photo attr', new_admin_photo_attr_path

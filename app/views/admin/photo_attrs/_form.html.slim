@@ -1,0 +1,18 @@
+= form_for @admin_photo_attr do |f|
+  - if @admin_photo_attr.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@admin_photo_attr.errors.count, "error")} prohibited this admin_photo_attr from being saved:"
+      div style="200px"
+        - @admin_photo_attr.errors.full_messages.each do |message|
+          .alert.alert-danger
+             = message
+
+  .input
+    = f.label :name
+    = f.text_field :name
+  br
+  .input
+    = f.label :site
+    = f.text_field :site
+  br
+  .actions = f.submit

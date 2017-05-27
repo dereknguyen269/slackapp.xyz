@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :messages
     post '/', to: 'dashboard#create'
     get '/auto', to: 'dashboard#auto'
+    resources :photo_attrs
   end
 end
 
