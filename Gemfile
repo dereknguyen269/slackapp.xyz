@@ -100,3 +100,6 @@ end
 
 gem 'nokogiri', '>= 1.6.8'
 gem 'rails-html-sanitizer', '~> 1.0.3'
+
+# Use Puma as the app server
+gem 'puma', '~> 3.0'

@@ -7,17 +7,24 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
-!/tmp/.keep
-.idea
+/tmp
 
-# Ignore Byebug command history file.
+# Ignore database config file
+config/database.yml
+config/application.yml
+
 .byebug_history
-/config/application.yml
+public/system/**/*
+public/uploads/*
+.DS_Store
+/app/.DS_Store
+/app/assets/.DS_Store
+/app/assets/javascripts/.DS_Store
+/vendor/assets/javascripts/.DS_Store
+/vendor/assets/.DS_Store
+/vendor/.DS_Store
+
+docker-compose.yml
