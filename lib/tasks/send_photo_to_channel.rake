@@ -18,7 +18,7 @@ namespace :send_photo_to_channel do
     message = "#{desc} #{photo}"
     # request.set_form_data('message[channel]' => 'wtf', 'message[message]' => message, via: 'task')
     # response = http.request(request)
-    channel = 'wtf'
+    channel = ChannelsJsonModel.working_channel
     IronMan::SendMessageToChannelService.new(channel, message).call
   end
 

@@ -10,7 +10,7 @@ namespace :wake_up do
       request = Net::HTTP::Get.new(uri.request_uri)
       response = http.request(request)
       current_time = Time.current.strftime('%a, %d %b %G %T %Z %z')
-      channel = 'apps'
+      channel = ChannelsJsonModel.notifications_channel
       message = response&.code == "200" ? "Wake up has been successfully at #{current_time}" : "Wake up has been failed at #{current_time}"
       IronMan::SendMessageToChannelService.new(channel, message).call
     end
