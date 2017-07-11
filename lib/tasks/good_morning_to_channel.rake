@@ -10,7 +10,7 @@ namespace :good_morning_to_channel do
     # message = "Good morning everybody :sun_with_face:"
     # request.set_form_data('message[channel]' => 'wtf', 'message[message]' => message, via: 'task')
     # response = http.request(request)
-    channel = 'wtf'
+    channel = ChannelsJsonModel.working_channel
     message = "Good morning everybody :sun_with_face:"
     IronMan::SendMessageToChannelService.new(channel, message).call
   end
