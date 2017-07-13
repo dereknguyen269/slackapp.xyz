@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7.1'
@@ -60,7 +59,7 @@ gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # User authentication and authorization
-gem 'devise'
+gem 'devise', '~> 4.3.0'
 gem 'rolify'
 gem 'pundit'
 gem 'omniauth'
@@ -82,23 +81,18 @@ gem "scoped_search"
 gem 'annotate'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  # Use RSpec
   gem 'rspec-rails'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
 
-gem 'nokogiri', '>= 1.6.8'
+gem 'nokogiri', '1.8.0'
 gem 'rails-html-sanitizer', '~> 1.0.3'
 
 # Use Puma as the app server
