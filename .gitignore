@@ -8,7 +8,13 @@
 .byebug_history
 /public/system
 
-!config/application.yml
+# Ignore local config ENV
+
+config/application.yml
+
+# Ignore local config docker
+
+docker-compose.yml
 
 .bundle/
 
@@ -18,4 +24,3 @@ public/assets/*
 
 .idea/
 
-!docker-compose.yml
