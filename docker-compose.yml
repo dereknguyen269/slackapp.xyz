@@ -1,53 +1,56 @@
-version: "2"
-
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      args:
+        RAILS_ENV: development
+    volumes:
+      - public_data:/opt/app/public
+      - ./log:/opt/app/log
+      - assets:/usr/app/${APP_NAME}/public/assets
+    environment:
+      SECRET_KEY_BASE: '807d0204fb8af4cdfab32638782d87009a9a9426731e520d5a7efbc12140b5841dcae537a1639348f69d2a8735af52fab85f10e9145e102a814902f08d35c56a'
+      DATABASE_URL: 'postgresql://postgres:postgres@db/slackbot_development'
+      TOKEN: 'YmVnaW5fc2VjcmV0X2tleTplRzk0WWkweE1EQTNPVEl4TkRNMk5UQXRWemRM\nTms1a1l6TnpXRXBzYjBGNVdEbEVZazl5VlVSVApiV2x1YUhGMVlXNDBNRGd3\nCjplbmRfc2VjcmV0X2tleQ==\n'
+      SECRET_STR: minhquan4080
+    links:
+      - db
+    command: bundle exec rails s Puma -b 0.0.0.0
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DATABASE: slackbot_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      # Mount the DB dumps folder into the container, to be able to create & access database dumps:
+      - ./db/dumps:/db/dumps
+      # Mount out tmp folder, we might want to have access to something there during development:
+      - ./tmp:/tmp
+      # Mount our 'restoredb' script:
+      - ./bin/restoredb:/bin/restoredb:ro
+      # Mount our 'dumpdb' script:
+      - ./bin/dumpdb:/bin/dumpdb:ro
+      # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
+      - postgres-data:/var/lib/postgresql/data
+  web:
+    build: containers/nginx
+    volumes:
+      - ./log:/opt/app/log
+      - ./tmp:/opt/app/tmp
+      - public_data:/opt/app/public
+    ports:
+      - "80:80"
+    links:
+      - app
 volumes:
   postgres-data:
     driver: local
-  app-gems:
-    driver: local
-
-services:
-
-  postgres:
-    image: postgres:9.5.4 # We'll use the official postgres image.
-    volumes:
-      # Mounts a persistable volume inside the postgres data folder, so we
-      # don't lose the created databases when this container is removed.
-      - postgres-data:/var/lib/postgresql/data
-    environment:
-      # The password we'll use to access the databases:
-      POSTGRES_PASSWORD: s0m3p455
-
-  web:
-    build:
-      context: .
-      dockerfile: dev.Dockerfile
-    # The name our development image will use:
-    image: my-namespace/my-app:development
-    command: rails server -b 0.0.0.0 -p 3000
-    ports:
-      # This will bind your port 3000 with the container's port 3000, so we can
-      # use 'http://localhost:3000' to see our Rails app:
-      - 3000:3000
-    links:
-      # Makes the postgres service a dependency for our app, and also makes it
-      # visible at the 'db' hostname from this container:
-      - postgres:db
-    entrypoint: /usr/src/app/development-entrypoint
-    volumes:
-      # Mounts the app code (".") into the container's "/usr/src/app" folder:
-      - .:/usr/src/app
-      # Mounts a persistable volume in the installed gems folder, so we can add
-      # gems to the app without having to build the development image again:
-      - app-gems:/usr/local/bundle
-    # Keeps the stdin open, so we can attach to our app container's process and
-    # do stuff such as `byebug` or `binding.pry`:
-    stdin_open: true
-    # Allows us to send signals (CTRL+C, CTRL+P + CTRL+Q) into the container:
-    tty: true
-    environment:
-      # Notice that this is the DB we'll use:
-      DATABASE_URL: postgres://postgres:s0m3p455@db:5432/my_app_development
-      # We'll use this env variable to make the log output gets directed
-      # to Docker:
-      RAILS_LOG_TO_STDOUT: "true"
+  assets:
+    external: false
+  db_data:
+  cache_data:
+  public_data:
