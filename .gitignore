@@ -8,7 +8,7 @@
 .byebug_history
 /public/system
 
-config/application.yml
+!config/application.yml
 
 .bundle/
 
@@ -17,3 +17,5 @@ public/assets/*
 # app/assets/javascripts/i18n/*
 
 .idea/
+
+!docker-compose.yml

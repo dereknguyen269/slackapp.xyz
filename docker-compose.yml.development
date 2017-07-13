@@ -12,8 +12,8 @@ services:
     environment:
       SECRET_KEY_BASE: '807d0204fb8af4cdfab32638782d87009a9a9426731e520d5a7efbc12140b5841dcae537a1639348f69d2a8735af52fab85f10e9145e102a814902f08d35c56a'
       DATABASE_URL: 'postgresql://postgres:postgres@db/slackbot_development'
-      TOKEN: 'YmVnaW5fc2VjcmV0X2tleTplRzk0WWkweE1EQTNPVEl4TkRNMk5UQXRWemRM\nTms1a1l6TnpXRXBzYjBGNVdEbEVZazl5VlVSVApiV2x1YUhGMVlXNDBNRGd3\nCjplbmRfc2VjcmV0X2tleQ==\n'
-      SECRET_STR: minhquan4080
+      TOKEN:
+      SECRET_STR:
     links:
       - db
     command: bundle exec rails s Puma -b 0.0.0.0
