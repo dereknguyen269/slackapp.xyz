@@ -2,6 +2,8 @@ require "base64"
 
 class Base64Helper
 
+  EMPTY = 'need_config_slack_token_api_and_your_secret_string'
+
   def initialize(key, secret)
     @key = key
     @secret = secret
@@ -12,7 +14,9 @@ class Base64Helper
   end
 
   def decode
-    Base64.decode64(reverse_convert)
+    Base64.decode64(reverse_convert) if @key != EMPTY
+  rescue
+    EMPTY
   end
 
   private
@@ -25,6 +29,7 @@ class Base64Helper
     end
 
     def reverse_convert
+      return EMPTY if @key.nil? || @secret.nil?
       str = Base64.decode64(@key.gsub("\\n", "\n"))
       str = str.gsub('begin_secret_key:', '')
       str = str.gsub(':end_secret_key', '')

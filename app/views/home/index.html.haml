@@ -1,9 +1,0 @@
-= current_user.email if user_signed_in?
-
-= link_to('Logout', destroy_user_session_path, :method => :delete) if user_signed_in?
-
-%section
-  %header
-    %h1 Tattletale
-
-  = react_component 'MessagesSection', {}, :div
