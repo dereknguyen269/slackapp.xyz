@@ -1,5 +1,5 @@
-unless User.find_by(email: 'admin@slack-bot.com').present?
+unless User.find_by(email: 'quannguyen@bestcoder.info').present?
   print 'Seeding Admin...'
-  User.create!(email: 'admin@slack-bot.com', password: '123123123')
+  User.create!(email: 'quannguyen@bestcoder.info', password: '123123123')
   puts ' Done'
 end
