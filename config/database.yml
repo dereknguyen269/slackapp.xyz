@@ -1,16 +1,19 @@
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: <%= ENV['ADAPTER'] %>
+  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   min_messages: log
 
 
 development:
   <<: *default
+  database: slack_bot_<%= Rails.env %>
 
 test:
   <<: *default
+  database: slack_bot_<%= Rails.env %>
 
 production:
   <<: *default
   min_messages: notice
+  url: <%= ENV['DATABASE_URL'] %>

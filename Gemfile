@@ -42,13 +42,6 @@ gem 'haml-rails'
 # Slim
 gem 'slim-rails', '~> 3.1.0'
 
-gem 'kaminari'
-
-# React
-gem 'react-rails'
-gem 'sprockets-coffee-react'
-gem 'js-routes'
-
 # Form builders & helpers
 gem 'simple_form'
 gem 'cocoon'
@@ -70,7 +63,6 @@ gem 'figaro'
 
 # Third party
 gem 'rails_db'
-gem 'appsignal'
 
 # Calculate
 gem 'dentaku'
@@ -93,7 +85,6 @@ group :development do
 end
 
 gem 'nokogiri', '1.8.0'
-gem 'rails-html-sanitizer', '~> 1.0.3'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
