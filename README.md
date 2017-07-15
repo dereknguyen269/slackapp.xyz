@@ -78,3 +78,9 @@ Stop:
 ```
 docker-compose stop
 ```
+
+**Note: Remove all containers**
+
+```
+docker-compose rm -v
+```
