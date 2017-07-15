@@ -2,8 +2,10 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7.1'
-# Use sqlite3 as the database for Active Record
+# Use Postgres as the database for Active Record
 gem 'pg'
+# Use mysql as the database for Active Record
+# gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -42,13 +44,6 @@ gem 'haml-rails'
 # Slim
 gem 'slim-rails', '~> 3.1.0'
 
-gem 'kaminari'
-
-# React
-gem 'react-rails'
-gem 'sprockets-coffee-react'
-gem 'js-routes'
-
 # Form builders & helpers
 gem 'simple_form'
 gem 'cocoon'
@@ -70,7 +65,6 @@ gem 'figaro'
 
 # Third party
 gem 'rails_db'
-gem 'appsignal'
 
 # Calculate
 gem 'dentaku'
@@ -93,7 +87,6 @@ group :development do
 end
 
 gem 'nokogiri', '1.8.0'
-gem 'rails-html-sanitizer', '~> 1.0.3'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

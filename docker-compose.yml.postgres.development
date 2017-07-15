@@ -11,18 +11,16 @@ services:
       - assets:/usr/app/${APP_NAME}/public/assets
     environment:
       SECRET_KEY_BASE: '807d0204fb8af4cdfab32638782d87009a9a9426731e520d5a7efbc12140b5841dcae537a1639348f69d2a8735af52fab85f10e9145e102a814902f08d35c56a'
-      DATABASE_URL: 'postgresql://postgres:postgres@db/slackbot_development'
-      TOKEN:
-      SECRET_STR:
+      DATABASE_URL: 'postgresql://postgres:postgres@db/slack_bot_development'
     links:
       - db
     command: bundle exec rails s Puma -b 0.0.0.0
   db:
     image: postgres
     environment:
-      POSTGRES_DATABASE: slackbot_development
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      DATABASE: slack_bot_development
+      USER: postgres
+      PASSWORD: postgres
     ports:
       - 5432:5432
     volumes:
