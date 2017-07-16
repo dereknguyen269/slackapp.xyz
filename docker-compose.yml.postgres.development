@@ -1,0 +1,54 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      args:
+        RAILS_ENV: development
+    volumes:
+      - public_data:/opt/app/public
+      - ./log:/opt/app/log
+      - assets:/usr/app/${APP_NAME}/public/assets
+    environment:
+      SECRET_KEY_BASE: '807d0204fb8af4cdfab32638782d87009a9a9426731e520d5a7efbc12140b5841dcae537a1639348f69d2a8735af52fab85f10e9145e102a814902f08d35c56a'
+      DATABASE_URL: 'postgresql://postgres:postgres@db/slack_bot_development'
+    links:
+      - db
+    command: bundle exec rails s Puma -b 0.0.0.0
+  db:
+    image: postgres
+    environment:
+      DATABASE: slack_bot_development
+      USER: postgres
+      PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      # Mount the DB dumps folder into the container, to be able to create & access database dumps:
+      - ./db/dumps:/db/dumps
+      # Mount out tmp folder, we might want to have access to something there during development:
+      - ./tmp:/tmp
+      # Mount our 'restoredb' script:
+      - ./bin/restoredb:/bin/restoredb:ro
+      # Mount our 'dumpdb' script:
+      - ./bin/dumpdb:/bin/dumpdb:ro
+      # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
+      - postgres-data:/var/lib/postgresql/data
+  web:
+    build: containers/nginx
+    volumes:
+      - ./log:/opt/app/log
+      - ./tmp:/opt/app/tmp
+      - public_data:/opt/app/public
+    ports:
+      - "80:80"
+    links:
+      - app
+volumes:
+  postgres-data:
+    driver: local
+  assets:
+    external: false
+  db_data:
+  cache_data:
+  public_data:
