@@ -1,6 +1,7 @@
 server '52.90.195.71', port: 22, roles: [:web, :app, :db], primary: true
 set :repo_url, 'https://github.com/minhquan4080/slack-bot.git'
 set :application, 'slack-bot'
+set :branch, 'master'
 set :user, 'deploy'
 set :puma_threads, [4, 16]
 set :puma_workers, 0
@@ -34,7 +35,7 @@ namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
-      unless git rev-parse HEAD == git rev-parse origin/master
+      unless 'git rev-parse HEAD' == 'git rev-parse origin/master'
         puts "WARNING: HEAD is not the same as origin/master"
         puts "Run git push to sync changes."
         exit
