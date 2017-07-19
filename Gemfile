@@ -93,9 +93,10 @@ gem 'puma', '~> 3.0'
 
 # Auto deploy with capistrano
 group :development do
-  gem 'capistrano', require: false
-  gem 'capistrano-rvm', require: false
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma', require: false
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-rails', '~> 1.3'
+  gem 'capistrano-safe-deploy-to', '~> 1.1.1'
+  gem 'capistrano-ssh-doctor', '~> 1.0'
 end
