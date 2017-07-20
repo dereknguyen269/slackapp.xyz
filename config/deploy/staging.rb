@@ -59,3 +59,13 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+lock '3.8.2'
+
+set :application, 'slack-bot'
+
+set :deploy_to, -> { "deploy/#{fetch(:application)}_#{fetch(:stage)}" }
+
+set :repo_url, 'https://github.com/minhquan4080/slack-bot.git'
+
+server "52.91.253.127", user: "minhquan4080", roles: %w{app db web}

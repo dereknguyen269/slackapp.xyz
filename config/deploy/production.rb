@@ -60,8 +60,13 @@
 #     # password: "please use keys"
 #   }
 
-# ssh configuration options. Make sure the following works: $ ssh <deploy_user>@<server_ip>
-server 'server_ip', user: 'user_name', roles: %w{web app db}
+lock '3.8.2'
 
-# only if your app already has a domain, then add:
-# set :nginx_server_name, 'mydomain.com'
+set :application, 'slack-bot'
+
+set :deploy_to, -> { "deploy/#{fetch(:application)}_#{fetch(:stage)}" }
+
+set :repo_url, 'https://github.com/minhquan4080/slack-bot.git'
+
+server "52.91.253.127", user: "minhquan4080", roles: %w{app db web}
+
