@@ -13,5 +13,3 @@ set :repo_url, 'git@github.com:minhquan4080/slack-bot.git'
 set :rvm_type, :auto                    # Defaults to: :auto
 set :rvm_ruby_version, '2.3.1'          # Defaults to: 'default'
 # set :rvm_custom_path, '~/.myveryownrvm'  # only needed if not detected
-
-
