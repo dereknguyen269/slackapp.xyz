@@ -90,3 +90,10 @@ gem 'nokogiri', '1.8.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+
+# Auto deploy with capistrano
+group :development do
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rails', '~> 1.3'
+  gem 'capistrano-rvm',   '~> 0.1'
+end

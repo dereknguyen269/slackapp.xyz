@@ -10,6 +10,7 @@ RUN apk add --no-cache \
   postgresql-dev \
   && rm -rf /var/cache/apk/*
 
+RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 RUN gem install bundler && gem install nokogiri -v '1.8.0' && gem install pkg-config -v '~> 1.1.7'
 RUN bundle config build.nokogiri --use-system-libraries
 
