@@ -91,6 +91,10 @@ gem 'nokogiri', '1.8.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
+# ActiveJob
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+
 # Auto deploy with capistrano
 group :development do
   gem "capistrano", "~> 3.8"

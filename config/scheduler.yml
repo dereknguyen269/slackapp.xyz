@@ -1,0 +1,2 @@
+IronManWorker:
+  cron: '00 12 * * * Asia/Ho_Chi_Minh'
