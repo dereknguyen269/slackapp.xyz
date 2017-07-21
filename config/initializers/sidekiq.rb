@@ -1,18 +1,11 @@
 require 'sidekiq/scheduler'
 
-namespace = [
-  Rails.application.class.parent_name,
-  Rails.env,
-  'sidekiq'
-  ].join(':')
-
-# redis_setting = {
-#   namespace: namespace,
-#   url: Settings.redis.url,
-# }
+redis_setting = {
+  url: ENV['REDIS_URL']
+}
 
 Sidekiq.configure_server do |config|
-  # config.redis = redis_setting
+  config.redis = redis_setting
   # config.server_middleware do |chain|
   #   chain.add Sidekiq::Middleware::Server::RetryJobs, max_retries: 0
   # end
@@ -22,6 +15,6 @@ Sidekiq.configure_server do |config|
   end
 end
 
-# Sidekiq.configure_client do |config|
-#   config.redis = redis_setting
-# end
+Sidekiq.configure_client do |config|
+  config.redis = redis_setting
+end

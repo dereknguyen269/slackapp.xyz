@@ -1,0 +1,9 @@
+development:
+  :verbose: true
+  :concurrency: 4
+production:
+  :logfile: ./log/sidekiq.log
+  :concurrency: 10
+:queues:
+  - default
+  - mailers
