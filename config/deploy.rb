@@ -1,14 +1,15 @@
-# config valid only for current version of Capistrano
 lock "3.8.2"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, ENV['APP_NAME']
+
+set :repo_url, ENV['REPO_URL']
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, -> { "/var/www/#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -33,4 +34,13 @@ set :repo_url, "git@example.com:me/my_repo.git"
 # set :local_user, -> { `git config user.name`.chomp }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 5
+
+set :ssh_options, {
+ forward_agent: true
+}
+
+server ENV['SERVER_IP'], user: ENV['DEPLOY_USER'], roles: %w(app web db), :primary => true
+
+after :deploy, 'prepare:files'
+after :'prepare:files', 'docker:build'
