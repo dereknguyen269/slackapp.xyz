@@ -47,5 +47,5 @@ server ENV['SERVER_IP'], user: ENV['DEPLOY_USER'], roles: %w(app web db), :prima
 # after :'prepare:staging', 'docker:build'
 
 # Production & Development
-# after :deploy, 'prepare:development'
-# after :'prepare:development', 'docker:build'
+after :deploy, 'prepare:development'
+after :'prepare:development', 'docker:build'

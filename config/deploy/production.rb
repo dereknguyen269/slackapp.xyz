@@ -60,4 +60,4 @@
 #     # password: "please use keys"
 #   }
 
-ask :master
+set :branch, 'master'
