@@ -12,8 +12,10 @@ services:
     environment:
       SECRET_KEY_BASE: '807d0204fb8af4cdfab32638782d87009a9a9426731e520d5a7efbc12140b5841dcae537a1639348f69d2a8735af52fab85f10e9145e102a814902f08d35c56a'
       DATABASE_URL: 'postgresql://postgres:postgres@db/slack_bot_development'
+      REDIS_URL:    'redis://redis:6379'
     links:
       - db
+      - redis
     command: bundle exec rails s Puma -b 0.0.0.0
   db:
     image: postgres
@@ -44,6 +46,27 @@ services:
       - "80:80"
     links:
       - app
+  worker:
+    build:
+      context: .
+      args:
+        RAILS_ENV: development
+    volumes:
+      - ./log:/opt/app/log
+      - ./tmp:/opt/app/tmp
+      - public_data:/opt/app/public
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: 'postgresql://postgres:postgres@db/slack_bot_development'
+      REDIS_URL:    'redis://redis:6379'
+    links:
+      - db
+      - redis
+    command: [bundle, exec, sidekiq, -C, containers/app/sidekiq.yml]
+  redis:
+    image: redis:3.0
+    volumes:
+      - cache_data:/data
 volumes:
   postgres-data:
     driver: local

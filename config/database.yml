@@ -1,7 +1,7 @@
 default: &default
   adapter: <%= ENV['ADAPTER'] %>
   encoding: utf8
-  username: root
+  username: root # Commend if you run on locally
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   min_messages: log
 
