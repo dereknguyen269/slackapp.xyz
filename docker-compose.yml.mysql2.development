@@ -42,9 +42,7 @@ services:
       args:
         RAILS_ENV: development
     volumes:
-      - ./log:/opt/app/log
-      - ./tmp:/opt/app/tmp
-      - public_data:/opt/app/public
+      - /data
     environment:
       RAILS_ENV: development
       DATABASE_URL: 'mysql2://slackbot:slackbot@db/slack_bot_development'
@@ -56,7 +54,9 @@ services:
   redis:
     image: redis:3.0
     volumes:
-      - cache_data:/data
+      - /data
+    ports:
+      - "6379"
 volumes:
   assets:
     external: false

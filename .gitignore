@@ -12,6 +12,9 @@
 
 config/application.yml
 
+# Ignore local nginx
+containers/nginx/nginx.conf
+
 # Ignore local config docker
 
 docker-compose.yml
