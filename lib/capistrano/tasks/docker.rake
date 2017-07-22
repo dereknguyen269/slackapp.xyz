@@ -49,4 +49,13 @@ namespace :docker do
     end
   end
 
+  # Danger
+  desc "Destroy all containners"
+  task :destroy do
+    on roles(:app) do
+      execute "docker stop $(docker ps -a -q)"
+      execute "docker rm $(docker ps -a -q)"
+    end
+  end
+
 end
