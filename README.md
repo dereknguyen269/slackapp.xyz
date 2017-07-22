@@ -41,6 +41,22 @@ Access this url: [localhost:3000](http://localhost:3000)
 
 ## Setup with Docker
 
+### nginx
+
+If you want use **port 80**
+
+```
+cp containers/common/development.nginx.config containers/nginx/nginx.config
+```
+
+If you want use **port 8080**
+
+```
+cp containers/common/staging.nginx.config containers/nginx/nginx.config
+```
+
+Another, you can change **port**.
+
 If use with Postgres:
 
 ```

@@ -42,5 +42,10 @@ set :ssh_options, {
 
 server ENV['SERVER_IP'], user: ENV['DEPLOY_USER'], roles: %w(app web db), :primary => true
 
-after :deploy, 'prepare:files'
-after :'prepare:files', 'docker:build'
+# Staging
+# after :deploy, 'prepare:staging'
+# after :'prepare:staging', 'docker:build'
+
+# Production & Development
+after :deploy, 'prepare:development'
+after :'prepare:development', 'docker:build'
