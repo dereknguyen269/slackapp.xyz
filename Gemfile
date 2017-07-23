@@ -24,15 +24,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Slack Bot
 gem 'slack-ruby-bot'
 gem 'celluloid-io'
@@ -91,6 +82,9 @@ gem 'nokogiri', '1.8.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
+# Use Unicorn as the app server on Production
+# gem 'unicorn', '~> 5.3.0'
+
 # ActiveJob
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
@@ -99,4 +93,7 @@ gem 'sidekiq-scheduler'
 group :development do
   gem "capistrano", "~> 3.8"
   gem 'capistrano-figaro'
+  gem 'capistrano3-unicorn'
 end
+
+# Other gems

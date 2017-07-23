@@ -4,6 +4,7 @@ MAINTAINER Quan Nguyen <quannguyen@bestcoder.info>
 
 RUN apk add --no-cache \
   alpine-sdk \
+  bash \
   tzdata \
   nodejs \
   mariadb-dev \
@@ -11,7 +12,7 @@ RUN apk add --no-cache \
   && rm -rf /var/cache/apk/*
 
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
-RUN gem install bundler && gem install nokogiri -v '1.8.0' && gem install pkg-config -v '~> 1.1.7'
+RUN gem install bundler -v 1.15.3 && gem install nokogiri -v '1.8.0' && gem install pkg-config -v '~> 1.1.7'
 RUN bundle config build.nokogiri --use-system-libraries
 
 ENV APP_ROOT /opt/app
@@ -19,7 +20,7 @@ ENV APP_ROOT /opt/app
 WORKDIR $APP_ROOT
 
 COPY Gemfile* $APP_ROOT/
-RUN bundle install -j4
+RUN bundle install -j4 --without development test
 
 ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV:-production}
