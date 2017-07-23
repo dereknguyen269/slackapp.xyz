@@ -13,7 +13,7 @@ class IronMan::RandPhotoService < IronMan::BaseService
       end
       desc = PhotoDescription.all.count > 0 ? PhotoDescription.all.sample.description : ('Yêu cmnr :beauty:' || 'Chỉ là test thôi mà :joy:')
       message = "#{desc} #{photo}"
-      channel = ChannelsJsonModel.working_channel
+      channel = Json::Channel.working_channel
       IronMan::SendMessageToChannelService.new(channel, message).call
     end
 

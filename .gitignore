@@ -21,6 +21,7 @@ docker-compose.yml
 
 .bundle/
 
+# Ignore local public assets
 public/assets/*
 
 # app/assets/javascripts/i18n/*

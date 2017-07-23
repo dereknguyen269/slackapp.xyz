@@ -4,7 +4,7 @@ class IronMan::SendEveryDayService < IronMan::BaseService
 
     def call
       message = current_message || "Không biết nói gì hết :joy:"
-      channel = ChannelsJsonModel.working_channel
+      channel = Json::Channel.working_channel
       IronMan::SendMessageToChannelService.new(channel, message).call
     end
 
