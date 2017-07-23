@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
+
   devise_for :users, controllers: { sessions: 'users/sessions' }
-  root 'admin/dashboard#index'
-  resources :messages, only: :index
+
+  root 'home#index'
+  get 'status', to: 'health#index'
+
   namespace :admin, path: 'admin' do
     root 'dashboard#index'
-    get '/', to: redirect('/dashboard')
-    resources :dashboard, only: [:index]
-    resources :messages
-    post '/', to: 'dashboard#create'
-    get '/auto', to: 'dashboard#auto'
+    resources :dashboard, only: [:index, :create]
     resources :photo_attrs
   end
 end
