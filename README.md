@@ -46,13 +46,13 @@ Access this url: [localhost:3000](http://localhost:3000)
 If you want use **port 80**
 
 ```
-cp containers/common/development.nginx.config containers/nginx/nginx.config
+cp containers/common/development.nginx.config containers/nginx/nginx.conf
 ```
 
 If you want use **port 8080**
 
 ```
-cp containers/common/staging.nginx.config containers/nginx/nginx.config
+cp containers/common/staging.nginx.config containers/nginx/nginx.conf
 ```
 
 Another, you can change **port**.
@@ -86,7 +86,7 @@ This app will run at: [localhost:80](http://localhost:80)
 Setup Database:
 
 ```
-docker-compose run app rake db:create && rake db:migrate && rake db:seed
+docker-compose run app rake db:create db:migrate db:seed
 ```
 
 Stop:
