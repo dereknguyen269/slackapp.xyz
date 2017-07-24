@@ -14,28 +14,28 @@ services:
       # DATABASE_URL: 'postgresql://postgres:postgres@db/slack_bot_development'
       REDIS_URL:    'redis://redis:6379'
     links:
-      - db
+      # - db
       - redis
     command: bundle exec rails s Puma -b 0.0.0.0
-  db:
-    image: postgres
-    environment:
-      DATABASE: slack_bot_development
-      USER: postgres
-      PASSWORD: postgres
-    ports:
-      - 5432:5432
-    volumes:
-      # Mount the DB dumps folder into the container, to be able to create & access database dumps:
-      - ./db/dumps:/db/dumps
-      # Mount out tmp folder, we might want to have access to something there during development:
-      - ./tmp:/tmp
-      # Mount our 'restoredb' script:
-      - ./bin/restoredb:/bin/restoredb:ro
-      # Mount our 'dumpdb' script:
-      - ./bin/dumpdb:/bin/dumpdb:ro
-      # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
-      - postgres-data:/var/lib/postgresql/data
+  # db:
+  #   image: postgres
+  #   environment:
+  #     DATABASE: slack_bot_development
+  #     USER: postgres
+  #     PASSWORD: postgres
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     # Mount the DB dumps folder into the container, to be able to create & access database dumps:
+  #     - ./db/dumps:/db/dumps
+  #     # Mount out tmp folder, we might want to have access to something there during development:
+  #     - ./tmp:/tmp
+  #     # Mount our 'restoredb' script:
+  #     - ./bin/restoredb:/bin/restoredb:ro
+  #     # Mount our 'dumpdb' script:
+  #     - ./bin/dumpdb:/bin/dumpdb:ro
+  #     # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
+  #     - postgres-data:/var/lib/postgresql/data
   web:
     build: containers/nginx
     volumes:
@@ -58,7 +58,7 @@ services:
       # DATABASE_URL: 'postgresql://postgres:postgres@db/slack_bot_development'
       REDIS_URL:    'redis://redis:6379'
     links:
-      - db
+      # - db
       - redis
     command: [bundle, exec, sidekiq, -C, containers/app/sidekiq.yml]
   redis:
@@ -68,8 +68,8 @@ services:
     ports:
       - "6379"
 volumes:
-  postgres-data:
-    driver: local
+  # postgres-data:
+  #   driver: local
   assets:
     external: false
   db_data:
