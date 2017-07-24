@@ -33,6 +33,8 @@ set :deploy_to, -> { "/var/www/#{fetch(:application)}_#{fetch(:stage)}" }
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
 
+# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
@@ -40,7 +42,19 @@ set :ssh_options, {
  forward_agent: true
 }
 
+set :deploy_via, :remote_cache
+set :use_sudo, false
+
 server ENV['SERVER_IP'], user: ENV['DEPLOY_USER'], roles: %w(app web db), :primary => true
+
+# If use Unicorn as web server
+# after 'deploy:publishing', 'deploy:restart'
+
+# namespace :deploy do
+#   task :restart do
+#     invoke 'unicorn:reload'
+#   end
+# end
 
 # Staging
 # after :deploy, 'prepare:staging'
