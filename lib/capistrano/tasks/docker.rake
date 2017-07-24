@@ -3,7 +3,7 @@ namespace :docker do
   desc "docker-compose build"
   task :build do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose build"
+      execute "cd #{current_path} && docker-compose build -e DATABASE_URL=#{ENV['DATABASE_URL']}"
     end
   end
 

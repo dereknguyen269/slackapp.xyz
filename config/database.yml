@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: slack_bot_<%= Rails.env %>
+  url: <%= ENV['DATABASE_URL'] %>
 
 test:
   <<: *default
