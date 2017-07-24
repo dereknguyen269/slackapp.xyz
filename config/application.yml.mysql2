@@ -4,6 +4,7 @@ ADAPTER: mysql2
 APP_NAME: slackbot
 REPO_URL: git@github.com:minhquan4080/slackapp.xyz.git
 SERVER_IP:
+SERVER_DOMAIN:
 DEPLOY_USER:
 
 development:
