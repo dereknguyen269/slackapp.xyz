@@ -2,7 +2,7 @@ TOKEN:
 SECRET_STR:
 ADAPTER: mysql2
 APP_NAME: slackbot
-REPO_URL: git@github.com:minhquan4080/slack-bot.git
+REPO_URL: git@github.com:minhquan4080/slackapp.xyz.git
 SERVER_IP:
 DEPLOY_USER:
 
