@@ -1,9 +1,16 @@
 namespace :docker do
 
-  desc "docker-compose build build --no-cache -e env_args=val"
+  desc "Export ENV"
+  task :export_env  do
+    on roles(:app) do
+      execute "cd #{current_path} && export DATABASE_URL=#{ENV['DATABASE_URL']}"
+    end
+  end
+
+  desc "docker-compose build build --no-cache -e"
   task :build do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose build --no-cache -e DATABASE_URL=#{ENV['DATABASE_URL']}"
+      execute "cd #{current_path} && docker-compose build --force-rm"
     end
   end
 
