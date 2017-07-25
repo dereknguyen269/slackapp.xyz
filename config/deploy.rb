@@ -42,14 +42,18 @@ set :ssh_options, {
 
 server ENV['SERVER_IP'], user: ENV['DEPLOY_USER'], roles: %w(app web db), :primary => true
 
-# Staging
-# after :deploy, 'prepare:staging'
-# after :'prepare:staging', 'docker:build'
-
 # Production & Development
-after :deploy, 'prepare:development'
-# after :'prepare:development', 'docker:setup_db'
-# after :'docker:setup_db', 'docker:build'
-after :'prepare:development', 'docker:build'
-after :'docker:build', 'docker:up'
-after :'docker:up', 'slackbot:notify_deployed'
+
+if ENV['DATABASE_URL'].blank?
+  after :deploy, 'prepare:development'
+  after :'prepare:development', 'docker:build'
+  after :'docker:build', 'docker:up'
+  after :'docker:up', 'docker:setup_db'
+  after :'docker:setup_db', 'slackbot:notify_deployed'
+else
+  after :deploy, 'prepare:development'
+  after :'prepare:development', 'docker:export_env'
+  after :'docker:export_env', 'docker:build'
+  after :'docker:build', 'docker:up'
+  after :'docker:up', 'slackbot:notify_deployed'
+end
