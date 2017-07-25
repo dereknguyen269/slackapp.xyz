@@ -11,7 +11,7 @@ class IronMan::SendEveryDayService < IronMan::BaseService
     private
 
       def current_message
-        now   = Time.current
+        now  = Time.current
         hour = now.hour
 
         if now.monday?

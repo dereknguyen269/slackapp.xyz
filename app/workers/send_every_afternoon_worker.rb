@@ -1,4 +1,4 @@
-class SendEveryDayWorker
+class SendEveryAfternoonWorker
   include Sidekiq::Worker
 
   def perform(*args)
