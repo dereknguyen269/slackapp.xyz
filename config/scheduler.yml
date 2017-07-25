@@ -1,6 +1,6 @@
 IronManWorker:
   cron: '00 12 * * * Asia/Ho_Chi_Minh'
-SendEveryDayWorker:
+SendEveryMorningWorker:
   cron: '00 09 * * * Asia/Ho_Chi_Minh'
-SendEveryDayWorker:
+SendEveryAfternoonWorker:
   cron: '00 18 * * * Asia/Ho_Chi_Minh'
