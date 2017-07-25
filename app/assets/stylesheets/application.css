@@ -12,6 +12,7 @@
  *
  *=require twitter-bootstrap-static/bootstrap
  *= require font-awesome
- *= require_tree .
+ *= require_tree ./admin
+ *= require bootstrap_and_overrides
  *= require_self
  */
