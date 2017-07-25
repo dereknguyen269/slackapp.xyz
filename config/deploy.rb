@@ -48,6 +48,8 @@ server ENV['SERVER_IP'], user: ENV['DEPLOY_USER'], roles: %w(app web db), :prima
 
 # Production & Development
 after :deploy, 'prepare:development'
-after :'prepare:development', 'docker:setup_db'
-after :'docker:setup_db', 'docker:up'
+# after :'prepare:development', 'docker:setup_db'
+# after :'docker:setup_db', 'docker:build'
+after :'prepare:development', 'docker:build'
+after :'docker:build', 'docker:up'
 after :'docker:up', 'slackbot:notify_deployed'

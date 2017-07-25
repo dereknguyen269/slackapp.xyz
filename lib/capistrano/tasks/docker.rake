@@ -1,16 +1,23 @@
 namespace :docker do
 
-  desc "docker-compose build"
+  desc "docker-compose build build --no-cache -e env_args=val"
   task :build do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose build -e DATABASE_URL=#{ENV['DATABASE_URL']}"
+      execute "cd #{current_path} && docker-compose build --no-cache -e DATABASE_URL=#{ENV['DATABASE_URL']}"
     end
   end
 
-  desc "docker-compose up -d"
+  desc "Docker create volums"
+  task :create_volums do
+    on roles(:app) do
+      execute "docker volume create --name=data_volume && docker volume create --name=public_data_volume"
+    end
+  end
+
+  desc "docker-compose up -d --force-recreate"
   task :up do
     on roles(:web) do
-      execute "cd #{current_path} && docker-compose up -d"
+      execute "cd #{current_path} && docker-compose up -d --force-recreate"
     end
   end
 

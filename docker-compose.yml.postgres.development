@@ -1,6 +1,8 @@
 version: '2'
 services:
   app:
+    container_name: slackbot
+    image: slackbot:latest
     build:
       context: .
       args:
@@ -72,6 +74,9 @@ volumes:
   #   driver: local
   assets:
     external: false
-  db_data:
-  cache_data:
   public_data:
+    external:
+      name: public_data_volume
+  data:
+    external:
+      name: data_volume

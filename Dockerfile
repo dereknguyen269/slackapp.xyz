@@ -11,7 +11,7 @@ RUN apk add --no-cache \
   && rm -rf /var/cache/apk/*
 
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
-RUN gem install bundler && gem install nokogiri -v '1.8.0' && gem install pkg-config -v '~> 1.1.7'
+RUN gem install bundler && gem install i18n -v 0.8.6 && gem install nokogiri -v '1.8.0' && gem install pkg-config -v '~> 1.1.7'
 RUN bundle config build.nokogiri --use-system-libraries
 
 ENV APP_ROOT /opt/app
