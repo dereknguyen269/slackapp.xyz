@@ -1,1 +1,76 @@
-iframe width="100%" height="100%" src="https://bestcoder.info"
+doctype html
+html lang="en"
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    meta charset="utf-8" /
+    title SlackApp | Home
+    meta content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport" /
+    link href="#{asset_url('favicon-144.png')}" rel=("shortcut icon") /
+    link href="#{asset_url('favicon-144.png')}" rel="apple-touch-icon" sizes="144x144" /
+    link href="#{asset_url('favicon-114.png')}" rel="apple-touch-icon" sizes="114x114" /
+    link href="#{asset_url('favicon-72.png')}" rel="apple-touch-icon" sizes="72x72" /
+    link href="#{asset_url('favicon-57.png')}" rel="apple-touch-icon" sizes="57x57" /
+    = stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'home', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    section#parent.animsition
+      / = image_tag 'logo.png', alt: '', class: 'quick fadeIn fixed align-bottom align-right mt50 main-logo'
+      #leftSide.color
+        #home.col-sm-8.col-sm-offset-2.col-xs-8.col-xs-offset-2
+          .h-content.top-25
+            h1.mid.animated.fadeInUp.mb30.m-heading.fw700
+              | Stay tuned
+              br/
+              | we're launching soon.
+              br/
+            .mt40.slow.animated.fadeInUp
+              #subscribe.fadeup.vertical.compress
+                form#subscribe-form.vertical-form.compressed-form action="#{contact_path}" method="POST"
+                  = hidden_field_tag :authenticity_token, form_authenticity_token
+                  input.input-email.round.mr10 name="EMAIL" placeholder=("Email Address") type="email" /
+                  button.submit.btn-solid.round.input-submit name="subscribe" type="submit"
+                    i.fa.fa-paper-plane aria-hidden="true"
+          .copyright.quick.fadeIn.align-bottom.fixed
+            p.block.fw400
+              | © 2017 - Made with&nbsp;
+              i.fa.fa-heart aria-hidden="true"
+              | &nbsp;by&nbsp;
+              span.notoSerif.italic.fw600 SlackApp.xyz
+          .vertical-result
+            #subscribe-result.vertical-result.fixed.col-sm-10.align-bottom
+      #rightSide.visible.img-only
+        .scene
+          .wing-left
+          .wing-right
+          .exhaust
+          .capsule
+            .top
+              .shadow
+            .base
+          .window-big
+          .window-small
+          .fire-1
+          .fire-2
+          .fire-3
+          .fire-4
+          .spark-1
+          .spark-2
+          .spark-3
+          .spark-4
+          .star.star--1
+          .star.star--2
+          .star.star--3
+          .star.star--4
+          .star.star--5
+          .star.star--6
+          .star.star--7
+          .star.star--8
+          .star.star--9
+          .star.star--10
+          .star.star--11
+          .star.star--12
+          .star.star--13
+          .star.star--14
+          .star.star--15
+          .star.star--16

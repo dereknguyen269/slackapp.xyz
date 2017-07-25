@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
   root 'home#index'
+  post 'contact', to: 'home#contact'
   get 'status', to: 'health#index'
 
   namespace :admin, path: 'admin' do
