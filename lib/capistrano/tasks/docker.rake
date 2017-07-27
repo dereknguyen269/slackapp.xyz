@@ -7,7 +7,7 @@ namespace :docker do
     end
   end
 
-  desc "docker-compose build build --no-cache -e"
+  desc "docker-compose build --no-cache"
   task :build do
     on roles(:app) do
       execute "cd #{current_path} && docker-compose build --force-rm"
