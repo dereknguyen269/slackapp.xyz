@@ -32,6 +32,7 @@ module SlackBotOnRails
 
     config.i18n.default_locale = :en
     config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/app/channels)
     config.active_job.queue_adapter = :sidekiq
   end
 end

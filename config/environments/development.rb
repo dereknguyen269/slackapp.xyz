@@ -44,4 +44,7 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  config.action_cable.url = 'ws://localhost:28080'
+
 end

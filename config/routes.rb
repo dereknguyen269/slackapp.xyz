@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
   end
+  match "/websocket", :to => ActionCable.server, via: [:get, :post]
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
 

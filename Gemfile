@@ -70,12 +70,16 @@ gem 'puma', '~> 3.0'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
-# ActionCable same as Rails 5+
-gem 'actioncable'
+# Same as Rails 5+
+gem 'actioncable', github: 'rails/actioncable', branch: 'archive'
 gem 'actionpack', '~> 4.2', '>= 4.2.9'
+gem 'activejob', '~> 4.2', '>= 4.2.9'
 
 # Store files in Rails applications
 # gem "activestorage", git: "https://github.com/rails/activestorage.git"
+
+# Table print in console
+gem 'hirb'
 
 # Calling Go code
 gem 'quartz'
@@ -86,15 +90,22 @@ gem 'gemoji'
 
 group :development, :test do
   gem 'byebug'
+  gem 'binding_of_caller'
   gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'listen', '~> 3.0.5'
+  # Spring speeds up development by keeping your application running in the background.
   gem "spring"
+  gem 'spring-watcher-listen', '~> 2.0.0'
+
   gem 'better_errors'
-  gem 'binding_of_caller'
-  gem "table_print"
   gem 'annotate'
 end
 

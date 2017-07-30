@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require cable.js
 //= require home/jquery-1.11.3.js
 //= require home/bootstrap.min.js
 //= require home/animsition.min.js
