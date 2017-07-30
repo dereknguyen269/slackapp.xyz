@@ -14,5 +14,4 @@ Thread.new do
   IronMan.run
 end
 
-puts 'Run rails app'
 run Rails.application
