@@ -11,7 +11,8 @@ require ::File.expand_path('../config/environment', __FILE__)
 
 Thread.abort_on_exception = true
 Thread.new do
-  IronMan.run
+  # Don't run Slackbot
+  # IronMan.run
 end
 
 run Rails.application
