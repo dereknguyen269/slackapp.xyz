@@ -31,3 +31,4 @@ public/assets/*
 # Added by npm-rails
 /node_modules
 /node_modules
+dump.rdb

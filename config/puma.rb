@@ -16,3 +16,6 @@ on_worker_boot do
   ActiveRecord::Base.establish_connection
   IronMan.run if enabled_bot == 'true' # Starting Slackbot when enabled
 end
+
+# Allow puma to be restarted by `rails restart` command.
+plugin :tmp_restart

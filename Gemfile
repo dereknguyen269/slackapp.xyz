@@ -74,7 +74,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
 # Same as Rails 5+
-gem 'actioncable', github: 'rails/actioncable', branch: 'archive'
+# gem 'actioncable', github: 'rails/actioncable', branch: 'archive'
 gem 'actionpack', '~> 4.2', '>= 4.2.9'
 gem 'activejob', '~> 4.2', '>= 4.2.9'
 
@@ -91,6 +91,7 @@ gem 'quartz'
 gem 'annotate'
 gem 'email_detected'
 gem 'gemoji'
+gem 'redis'
 
 # Manage Procfile
 gem 'foreman'
