@@ -28,3 +28,6 @@ public/assets/*
 
 .idea/
 
+# Added by npm-rails
+/node_modules
+/node_modules

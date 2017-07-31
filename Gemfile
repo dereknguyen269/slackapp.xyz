@@ -18,6 +18,9 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails', '4.3.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets-es6'
+gem 'browserify-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -85,8 +88,10 @@ gem 'hirb'
 gem 'quartz'
 
 # Others
+gem 'annotate'
 gem 'email_detected'
 gem 'gemoji'
+gem 'rack'
 
 group :development, :test do
   gem 'byebug'
@@ -104,9 +109,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background.
   gem "spring"
   gem 'spring-watcher-listen', '~> 2.0.0'
-
   gem 'better_errors'
-  gem 'annotate'
 end
 
 # Auto deploy with capistrano
