@@ -91,7 +91,9 @@ gem 'quartz'
 gem 'annotate'
 gem 'email_detected'
 gem 'gemoji'
-gem 'rack'
+
+# Manage Procfile
+gem 'foreman'
 
 group :development, :test do
   gem 'byebug'
