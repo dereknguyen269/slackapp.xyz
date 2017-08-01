@@ -1,1 +1,0 @@
-# action_cable.url = "ws://localhost:3000/cable"

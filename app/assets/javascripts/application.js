@@ -15,5 +15,4 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require cable.js
 //= require_tree ./admin

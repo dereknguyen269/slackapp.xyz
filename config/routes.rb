@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :workers, only: :index
   end
 
-  mount ActionCable.server => '/cable'
+ # mount ActionCable.server => '/cable'
 end
 
 Rails.application.routes.named_routes.tap do |routes|

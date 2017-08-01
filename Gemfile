@@ -74,7 +74,6 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
 # Same as Rails 5+
-# gem 'actioncable', github: 'rails/actioncable', branch: 'archive'
 gem 'actionpack', '~> 4.2', '>= 4.2.9'
 gem 'activejob', '~> 4.2', '>= 4.2.9'
 
@@ -92,13 +91,14 @@ gem 'annotate'
 gem 'email_detected'
 gem 'gemoji'
 gem 'redis'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 # Manage Procfile
 gem 'foreman'
 
 group :development, :test do
   gem 'byebug'
-  gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
@@ -112,7 +112,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background.
   gem "spring"
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'better_errors'
 end
 
 # Auto deploy with capistrano

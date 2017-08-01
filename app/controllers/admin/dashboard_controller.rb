@@ -20,7 +20,7 @@ class Admin::DashboardController < Admin::BaseController
   private
 
   def prepare_client
-    @client = Slack::Web::Client.new
+    @client = Slack::Web::Client.new(token: Base64Helper.new(ENV['TOKEN'], ENV['SECRET_STR']).decode)
   end
 
   def message_params
