@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527101839) do
+ActiveRecord::Schema.define(version: 20170801095548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "api_services", force: :cascade do |t|
+    t.string   "name",       default: "",    null: false
+    t.string   "api_url",    default: "",    null: false
+    t.string   "app_id",     default: "",    null: false
+    t.string   "token",      default: "",    null: false
+    t.string   "secret",     default: "",    null: false
+    t.boolean  "status",     default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "commands", force: :cascade do |t|
     t.string   "name",       null: false
@@ -45,8 +56,8 @@ ActiveRecord::Schema.define(version: 20170527101839) do
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string     "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "provider"
