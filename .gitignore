@@ -27,6 +27,7 @@ public/assets/*
 # app/assets/javascripts/i18n/*
 
 .idea/
+node_modules/
 
 # Added by npm-rails
 /node_modules

@@ -8,11 +8,30 @@ class IronMan::RandPhotoService < IronMan::BaseService
 
     def call
       photo = get_photo
-      if photo.blank?
-        photo = 'http://68.media.tumblr.com/ecc20a97d9de4d23c59180844b29ce78/tumblr_o96ty07hHF1qadv0oo1_500.jpg'
+      has_desc = false
+      if photo.present?
+        has_desc = true
+      else
+        photo_keywords = PhotoKeyword.all
+        if photo_keywords.count.zero?
+          params = {}
+        else
+          params = {query: photo_keywords.sample.keyword}
+        end
+        photo_from_api = Api::RandomPhotoService.call('unsplash', params)
+        if photo_from_api.present?
+          photo = photo_from_api
+        else
+          photo = 'http://68.media.tumblr.com/ecc20a97d9de4d23c59180844b29ce78/tumblr_o96ty07hHF1qadv0oo1_500.jpg'
+          has_desc = true
+        end
       end
       desc = PhotoDescription.all.count > 0 ? PhotoDescription.all.sample.description : ('Yêu cmnr :beauty:' || 'Chỉ là test thôi mà :joy:')
-      message = "#{desc} #{photo}"
+      if has_desc
+        message = "#{desc} #{photo}"
+      else
+        message = photo
+      end
       channel = Json::Channel.working_channel
       IronMan::SendMessageToChannelService.new(channel, message).call
     end

@@ -24,7 +24,7 @@ namespace :docker do
   desc "docker-compose up -d --force-recreate"
   task :up do
     on roles(:web) do
-      execute "cd #{current_path} && docker-compose up -d --force-recreate"
+      execute "cd #{current_path} && docker-compose up -d"
     end
   end
 
@@ -64,11 +64,12 @@ namespace :docker do
   end
 
   # Danger
-  desc "Destroy all containners"
+  desc "Destroy all containners and images"
   task :destroy do
     on roles(:app) do
       execute "docker stop $(docker ps -a -q)"
       execute "docker rm $(docker ps -a -q)"
+      execute "docker rmi -f $(docker images -q)"
     end
   end
 

@@ -23,4 +23,27 @@ if Rails.env.development?
   Command.find_or_create_by!(name: 'test', message: 'This is test message!')
   Command.find_or_create_by!(name: 'helloworld', message: 'Hello World :big-smile:')
   puts ' Done!'
+
+  print 'Seeding api services...'
+  ApiService.find_or_create_by!(name: 'UnsplashApi') do |api|
+    api.api_url = 'https://api.unsplash.com'
+    api.app_id = 'aef097a6112097cf203852d66eae3d94f7921f73597ded2bf3a54907f6c358e2'
+    api.token = 'no-token'
+    api.secret = '37bc8fdf2ebf01f0bbcda936f38b04641e9804dd8b0896b05fbc891ae73e9161'
+  end
+  puts ' Done!'
+
+  print 'Seeding photo keywords...'
+  PhotoKeyword.find_or_create_by!(keyword: 'sea')
+  PhotoKeyword.find_or_create_by!(keyword: 'rose')
+  PhotoKeyword.find_or_create_by!(keyword: 'sky')
+  PhotoKeyword.find_or_create_by!(keyword: 'flower')
+  PhotoKeyword.find_or_create_by!(keyword: 'mountai')
+  PhotoKeyword.find_or_create_by!(keyword: 'universe')
+  PhotoKeyword.find_or_create_by!(keyword: 'fashion')
+  PhotoKeyword.find_or_create_by!(keyword: 'japan')
+  PhotoKeyword.find_or_create_by!(keyword: 'hot')
+  PhotoKeyword.find_or_create_by!(keyword: 'art')
+  PhotoKeyword.find_or_create_by!(keyword: 'animal')
+  puts 'Done'
 end
