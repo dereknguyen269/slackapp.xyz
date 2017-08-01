@@ -12,7 +12,13 @@ class IronMan::RandPhotoService < IronMan::BaseService
       if photo.present?
         has_desc = true
       else
-        photo_from_api = Api::RandomPhotoService.call
+        photo_keywords = PhotoKeyword.all
+        if photo_keywords.count.zero?
+          params = {}
+        else
+          params = {query: photo_keywords.sample.keyword}
+        end
+        photo_from_api = Api::RandomPhotoService.call('unsplash', params)
         if photo_from_api.present?
           photo = photo_from_api
         else

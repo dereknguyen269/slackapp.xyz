@@ -6,7 +6,7 @@ module Api::Photos
   class SearchPhoto < Api::Photos::UnsplashBaseClient
     # ENDPOINT = "#{API_ENDPOINT}/search/photos".freeze
     PARAM_KEY = :search_photo
-    BASE_PARAMS = {page: 1, query: 'rose'}.freeze
+    BASE_PARAMS = {page: rand(1..10), query: 'sky'}.freeze
   end
 
   class UnsplashApi < BaseRequestApi
