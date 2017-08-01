@@ -1,15 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
-require "rails"
-# Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require_relative 'all'
+require_relative 'database_hardcore'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -32,5 +24,13 @@ module SlackBotOnRails
     config.i18n.default_locale = :en
     config.autoload_paths += %W(#{config.root}/lib)
     config.active_job.queue_adapter = :sidekiq
+
+    config.browserify_rails.paths << /vendor\/assets\/javascripts\/module\.js/
+    config.browserify_rails.source_map_environments << "development"
+    config.browserify_rails.evaluate_node_modules = true
+    # config.browserify_rails.force = ->(file) { File.extname(file) == ".ts" }
+    # config.browserify_rails.commandline_options = ["-t browserify-shim", "--fast"]
+    # config.browserify_rails.commandline_options = "-t browserify-shim --fast"
+    # config.browserify_rails.node_env = "production"
   end
 end

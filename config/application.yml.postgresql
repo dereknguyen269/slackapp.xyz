@@ -2,21 +2,23 @@ TOKEN:
 SECRET_STR:
 ADAPTER: postgresql
 APP_NAME: slackbot
-REPO_URL: git@github.com:minhquan4080/slackapp.xyz.git
+DATABASE_USER: root
+DATABASE_PASS:
+DATABASE_NAME:
+DATABASE_URL:
+DATABASE_REMOTE: false # true : allow use DATABASE_URL
+REPO_URL: git@github.com:minhquan4080/slack-bot.git
 SERVER_IP:
 SERVER_DOMAIN:
 DEPLOY_USER:
-DATABASE_URL:
+ENABLED_BOT: true
 
 development:
   SECRET_KEY_BASE: 28ab944719131e3ddece6349af54c13fcd0e67d6835c4aa132df94e3c9c25f09bceb7fc4d9b581f625a06bd1cc3e9f78fa92d7e3a63abcaea8edb377804b822e
-  WEB_URL: localhost:3000
 
 test:
   SECRET_KEY_BASE: 28ab944719131e3ddece6349af54c13fcd0e67d6835c4aa132df94e3c9c25f09bceb7fc4d9b581f625a06bd1cc3e9f78fa92d7e3a63abcaea8edb377804b822e
-  WEB_URL: localhost:3000
+  ENABLED_BOT: false
 
 production:
   SECRET_KEY_BASE:
-  WEB_URL:
-  DATABASE_URL:

@@ -1,20 +1,22 @@
 default: &default
   adapter: <%= ENV['ADAPTER'] %>
   encoding: utf8
-  username: root # Commend if you run on locally
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASS'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>
   min_messages: log
 
 
 development:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
 
 test:
   <<: *default
-  database: slack_bot_<%= Rails.env %>
+  username:
+  password:
+  database: <%= ENV['DATABASE_NAME'] %>_<%= Rails.env %>
 
 production:
   <<: *default
   min_messages: notice
-  url: <%= ENV['DATABASE_URL'] %>

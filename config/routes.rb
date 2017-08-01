@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
   end
-
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
   root 'home#index'
@@ -16,6 +15,8 @@ Rails.application.routes.draw do
     resources :photo_attrs
     resources :workers, only: :index
   end
+
+ # mount ActionCable.server => '/cable'
 end
 
 Rails.application.routes.named_routes.tap do |routes|
