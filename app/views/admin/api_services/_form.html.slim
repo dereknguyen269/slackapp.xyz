@@ -1,0 +1,19 @@
+= simple_form_for @api_service, url: admin_api_services_path, method: :post do |f|
+  = render partial: 'shared/form_error', locals: {errors: @api_service.errors.full_messages}
+  .form-group
+    = f.input :name, :error => false, input_html: { class: 'form-control'}
+  .form-group
+    = f.input :api_url, :error => false, input_html: { class: 'form-control'}
+  .form-group
+    = f.input :status, :error => false, as: :boolean, checked_value: :true, unchecked_value: :false, boolean_style: :inline
+  br
+  hr
+  b Information
+  hr
+  div#api_services
+    = f.simple_fields_for :api_service_infos do |info|
+      = render 'api_services_fields', f: info
+    .links
+      = link_to_add_association 'Add more', f, :api_service_infos
+  br
+  = f.button :submit, 'Save', class: 'btn btn-primary'

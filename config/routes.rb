@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index, :create]
     resources :photo_attrs
     resources :workers, only: :index
+    resources :api_services
   end
 
   resources :instagram, only: [:index, :create] do

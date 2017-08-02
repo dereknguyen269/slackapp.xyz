@@ -1,0 +1,22 @@
+.row
+  .col-lg-12
+    h1.page-header API Services
+
+.row
+  .col-sm-12
+    h4 List
+    hr
+    table.table.table-bordered
+      thead
+        tr
+          th API Name
+          th API Endpoint
+          th Status
+          th
+      tbody
+        - @api_services.each do |api_service|
+          tr
+            td = api_service.name
+            td
+            td = api_service.status ? 'Enabled' : 'Disabled'
+            td

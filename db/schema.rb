@@ -11,20 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802072215) do
+ActiveRecord::Schema.define(version: 20170802161150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "api_service_infos", force: :cascade do |t|
+    t.string   "app_name",                    null: false
+    t.string   "app_id",                      null: false
+    t.string   "app_secret",                  null: false
+    t.string   "app_token"
+    t.integer  "status",          default: 0, null: false
+    t.integer  "api_services_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "api_service_infos", ["api_services_id"], name: "index_api_service_infos_on_api_services_id", using: :btree
+
   create_table "api_services", force: :cascade do |t|
     t.string   "name",       default: "",    null: false
-    t.string   "api_url",    default: "",    null: false
-    t.string   "app_id",     default: "",    null: false
-    t.string   "token",      default: "",    null: false
-    t.string   "secret",     default: "",    null: false
     t.boolean  "status",     default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "api_url"
   end
 
   create_table "commands", force: :cascade do |t|
