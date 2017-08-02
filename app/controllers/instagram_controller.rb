@@ -7,7 +7,7 @@ class InstagramController < ApplicationController
   end
 
   def create
-    redirect_to Instagram.authorize_url(:redirect_uri => @callback_url)
+    redirect_to Instagram.authorize_url(:redirect_uri => @callback_url, scope: 'public_content')
   end
 
   def callback

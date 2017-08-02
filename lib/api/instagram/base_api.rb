@@ -8,6 +8,7 @@ module Api::Instagram
       @api_info = api_info
       @callback_url = callback_url
       @current_access_token = current_access_token
+      @service = get_service
     end
 
     def api_info
@@ -21,6 +22,18 @@ module Api::Instagram
     def current_access_token
       InstagramToken.last&.token
     end
+
+    def service
+      @service ||= get_service
+    end
+
+    private
+
+      def get_service
+        Instagram.client(:access_token => @current_access_token)
+      rescue
+        raise 'Failed to connect Instagram API!'
+      end
 
   end
 end

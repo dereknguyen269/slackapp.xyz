@@ -19,8 +19,50 @@ module Api::Instagram
     end
   end
 
+  class Test < Api::Instagram::BaseApi
+    PARAM_KEY = :test
+
+    def call
+      if service
+        {success: 'Instagram API work fine!'}
+      else
+        {error: 'Instagram API do not work'}
+      end
+    end
+  end
+
+  class UserMediaFeed < Api::Instagram::BaseApi
+    PARAM_KEY = :user_media_feed
+
+    def call
+      if service
+        medias = service.user_recent_media
+        get_image_url(medias) unless medias.count.zero?
+      else
+        {error: 'Instagram API do not work'}
+      end
+    end
+
+    def get_image_url(medias)
+      media = medias[0]
+      image = media&.images
+      url = image&.standard_resolution&.url
+      flag = false
+      if url.present?
+        flag = true
+      end
+      if !flag
+        medias.shift
+        get_image_url(medias)
+      end
+      url
+    end
+  end
+
   class InstagramApi < BaseRequestApi
     BASE_PARAMS = {}.freeze
     resource :authorize, AccessToken
+    resource :test, Test
+    resource :user_media_feed, UserMediaFeed
   end
 end
