@@ -1,20 +1,29 @@
 class InstagramController < ApplicationController
-  layout false
-
-  CALLBACK_URL = 'http://localhost:3000/instagram/callback'
+  layout 'login'
+  before_action :authenticate_user!
+  before_action :set_callback_url
 
   def index
-    render :index, layout: 'login'
   end
 
   def create
-    redirect_to Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
+    redirect_to Instagram.authorize_url(:redirect_uri => @callback_url)
   end
 
   def callback
-    response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
-    session[:instagram_access_token] = response.access_token
-    render json: {access_token: session[:instagram_access_token]}, status: 200
+    response = Instagram.get_access_token(params[:code], :redirect_uri => @callback_url)
+    if response && response.access_token
+      InstagramToken.find_or_create_by!(token: response.access_token)
+      redirect_to instagram_index_url, {notice: 'Access Token has been created!'}
+    else
+      redirect_to instagram_index_url, {error: 'Access Token can not create!'}
+    end
   end
+
+  private
+
+    def set_callback_url
+      @callback_url = callback_instagram_index_url
+    end
 
 end
