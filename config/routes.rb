@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     resources :workers, only: :index
   end
 
+  resources :instagram, only: [:index, :create] do
+    collection do
+      get :callback
+    end
+  end
+
  # mount ActionCable.server => '/cable'
 end
 

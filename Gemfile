@@ -49,6 +49,10 @@ gem 'rolify'
 gem 'pundit'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-instagram'
+
+# Support gems
+gem 'instagram', :git => 'git://github.com/facebookarchive/instagram-ruby-gem.git'
 
 # Config
 gem 'figaro'
