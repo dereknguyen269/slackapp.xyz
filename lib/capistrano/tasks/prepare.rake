@@ -9,12 +9,10 @@ namespace :prepare do
     end
   end
 
-  desc "clear and npm install"
+  desc "npm install"
   task :npm_install do
     on roles(:app) do
-      execute "cd #{current_path} && rake tmp:cache:clear"
-      execute "cd #{current_path} && rm -rf ./tmp"
-      execute "cd #{current_path} && npm install"
+      # execute "cd #{current_path} && npm install"
     end
   end
 

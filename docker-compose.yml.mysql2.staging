@@ -1,7 +1,6 @@
 version: '2'
 services:
   app:
-    container_name: slackbot
     image: slackbot:latest
     build:
       context: .

@@ -26,7 +26,7 @@ namespace :docker do
   desc "docker-compose up -d --force-recreate"
   task :up do
     on roles(:web) do
-      execute "cd #{current_path} && docker-compose up -d"
+      execute "cd #{current_path} && docker-compose up --force-recreate"
     end
   end
 
@@ -54,7 +54,8 @@ namespace :docker do
   desc "Run assets:precompile"
   task :assets do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose run app rake assets:precompile"
+      execute "cd #{current_path} && rm -rf ./tmp"
+      execute "cd #{current_path} && docker-compose run app rake tmp:cache:clear rake assets:precompile"
     end
   end
 
