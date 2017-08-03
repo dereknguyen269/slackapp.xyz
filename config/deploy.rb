@@ -56,6 +56,5 @@ else
   after :'docker:export_env', 'prepare:npm_install'
   after :'prepare:npm_install', 'docker:build'
   after :'docker:build', 'docker:up'
-  after :'docker:up', 'docker:assets'
-  after :'docker:assets', 'slackbot:notify_deployed'
+  after :'docker:up', 'slackbot:notify_deployed'
 end

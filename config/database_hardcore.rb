@@ -25,7 +25,7 @@ module Rails
         # Customize database config (Should only development mode)
         default_development = config['development']
         database_remote = ENV['DATABASE_REMOTE'] || 'false'
-        if database_remote == 'true'
+        if database_remote == 'true' || database_remote == true
           STDERR.puts "Use DATABASE_URL"
           require "yaml"
           application_yml = YAML::load_file(File.join(__dir__, 'application.yml'))

@@ -12,7 +12,7 @@ namespace :docker do
   desc "docker-compose build --no-cache"
   task :build do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose build --force-rm"
+      execute "cd #{current_path} && docker-compose build"
     end
   end
 
@@ -26,7 +26,7 @@ namespace :docker do
   desc "docker-compose up -d --force-recreate"
   task :up do
     on roles(:web) do
-      execute "cd #{current_path} && docker-compose up --force-recreate"
+      execute "cd #{current_path} && docker-compose stop && docker-compose up -d --force-recreate"
     end
   end
 
@@ -55,7 +55,7 @@ namespace :docker do
   task :assets do
     on roles(:app) do
       execute "cd #{current_path} && rm -rf ./tmp"
-      execute "cd #{current_path} && docker-compose run app rake tmp:cache:clear rake assets:precompile"
+      execute "cd #{current_path} && docker-compose run app rake assets:precompile"
     end
   end
 

@@ -10,11 +10,11 @@ rackup      DefaultRackup
 port        ENV['PORT']     || 3000
 environment ENV['RACK_ENV'] || 'development'
 
-enabled_bot =  ENV['ENABLED_BOT'] || 'false'
+enabled_bot =  ENV['ENABLED_BOT'] || false
 
 on_worker_boot do
   ActiveRecord::Base.establish_connection
-  IronMan.run if enabled_bot == 'true' # Starting Slackbot when enabled
+  IronMan.run if (enabled_bot == 'true' || enabled_bot == true) # Starting Slackbot when enabled
 end
 
 # Allow puma to be restarted by `rails restart` command.
