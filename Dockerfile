@@ -10,6 +10,7 @@ RUN apk add --no-cache \
   postgresql-dev \
   && rm -rf /var/cache/apk/*
 
+RUN npm -v
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 RUN gem install bundler && gem install i18n -v 0.8.6 && gem install nokogiri -v '1.8.0' && gem install pkg-config -v '~> 1.1.7'
 RUN bundle config build.nokogiri --use-system-libraries
@@ -24,6 +25,10 @@ RUN bundle install -j4
 ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV:-production}
 COPY . $APP_ROOT
+
+RUN npm install
+RUN rake assets:precompile
+RUN ./node_modules/.bin/browserify
 
 # Assets precompile
 RUN if [ $RAILS_ENV = 'production' ]; then bundle exec rake assets:precompile --trace; fi

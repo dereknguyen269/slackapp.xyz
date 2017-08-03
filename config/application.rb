@@ -32,7 +32,7 @@ module SlackBotOnRails
     # config.browserify_rails.commandline_options = ["-t browserify-shim", "--fast"]
     # config.browserify_rails.commandline_options = "-t browserify-shim --fast"
     config.browserify_rails.node_env = "production"
-    config.browserify_rails.node_bin = "/opt/node/bin/node"
+    # config.browserify_rails.node_bin = "/opt/node/bin/node"
     # config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 20.days }
   end
 end
