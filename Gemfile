@@ -94,7 +94,6 @@ gem 'quartz'
 gem 'annotate'
 gem 'email_detected'
 gem 'gemoji'
-gem 'redis'
 gem 'better_errors'
 gem 'binding_of_caller'
 

@@ -21,8 +21,6 @@ WORKDIR $APP_ROOT
 COPY Gemfile* $APP_ROOT/
 RUN bundle install -j4
 
-RUN npm install
-
 ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV:-production}
 COPY . $APP_ROOT
