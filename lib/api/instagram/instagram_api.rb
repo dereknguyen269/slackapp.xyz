@@ -44,18 +44,20 @@ module Api::Instagram
     end
 
     def get_image_url(medias)
-      media = medias[0]
+      media = medias.sample
+      a_index = medias.index(media)
       image = media&.images
       url = image&.standard_resolution&.url
+      caption = media&.caption&.text
       flag = false
       if url.present?
         flag = true
       end
       if !flag
-        medias.shift
+        medias.delete_at(a_index)
         get_image_url(medias)
       end
-      url
+      {url: url, caption: caption}
     end
   end
 
