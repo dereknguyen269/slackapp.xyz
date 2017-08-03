@@ -2,8 +2,8 @@ module Api
 
   class RandomPhotoService < BaseApiService
 
-    PHOTO_APIS = %w(unsplash)
-    DEFAULT_PHOTO = 'http://68.media.tumblr.com/ecc20a97d9de4d23c59180844b29ce78/tumblr_o96ty07hHF1qadv0oo1_500.jpg'.freeze
+    PHOTO_APIS = %w(unsplash instagram)
+    DEFAULT_PHOTO = 'https://scontent.cdninstagram.com/t51.2885-15/sh0.08/e35/p640x640/20582547_1939995162950134_1873222055978074112_n.jpg'.freeze
 
     class << self
 
@@ -32,6 +32,18 @@ module Api
             end
           end
         end
+
+        def instagram_api(params)
+          res = Api::Instagram::InstagramApi.new.user_media_feed.call
+          photo = RandomPhotoLog.find_by(url: res[:url])
+          flag = true unless photo
+          if !flag
+            instagram_api
+            exit
+          end
+          res
+        end
+
     end
 
   end

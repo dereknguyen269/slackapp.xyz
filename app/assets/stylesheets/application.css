@@ -14,5 +14,6 @@
  *= require font-awesome
  *= require_tree ./admin
  *= require bootstrap_and_overrides
+ *= require simple_form
  *= require_self
  */

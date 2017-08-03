@@ -31,6 +31,7 @@ module SlackBotOnRails
     # config.browserify_rails.force = ->(file) { File.extname(file) == ".ts" }
     # config.browserify_rails.commandline_options = ["-t browserify-shim", "--fast"]
     # config.browserify_rails.commandline_options = "-t browserify-shim --fast"
-    # config.browserify_rails.node_env = "production"
+    config.browserify_rails.node_env = "production"
+    # config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 20.days }
   end
 end

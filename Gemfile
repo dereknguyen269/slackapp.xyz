@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.3.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -49,6 +49,10 @@ gem 'rolify'
 gem 'pundit'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-instagram'
+
+# Support gems
+gem 'instagram', :git => 'git://github.com/facebookarchive/instagram-ruby-gem.git'
 
 # Config
 gem 'figaro'
@@ -95,7 +99,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 
 # Manage Procfile
-gem 'foreman'
+# gem 'foreman'
 
 group :development, :test do
   gem 'byebug'

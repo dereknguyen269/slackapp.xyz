@@ -16,3 +16,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree ./admin
+//= require cocoon
+
+Clipboard = require('clipboard');

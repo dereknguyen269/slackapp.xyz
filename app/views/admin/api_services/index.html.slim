@@ -1,0 +1,67 @@
+.row
+  .col-lg-12
+    h1.page-header API Services
+
+.row
+  .col-sm-12
+    button.btn.btn-primary type="button"
+      | ALL&nbsp;
+      span.badge #{@api_services.count}
+    | &nbsp;
+    = link_to 'NEW', new_admin_api_service_path, class: 'btn btn-success'
+    hr
+    table.table.table-bordered
+      thead
+        tr
+          th API Name
+          th API Endpoint
+          th width="10%" Used
+          th width="10%" Actions
+      tbody
+        - @api_services.each do |api_service|
+          tr
+            td = api_service.name
+            td
+              - if api_service.api_url.present?
+                a herf="javascript:void(0);" #{api_service.api_url}
+            td
+              - if api_service.status
+                span.label.label-success USE
+              - else
+                span.label.label-danger NOT USE
+            td
+              = link_to 'EDIT', edit_admin_api_service_path(api_service), class: 'btn btn-primary btn-xs'
+              | &nbsp;&nbsp;
+              = link_to 'REMOVE', admin_api_service_path(api_service), method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: 'Are you sure?'}
+
+          - if api_service.has_info?
+            tr
+              td colspan="4"
+                table.table.table-bordered
+                  thead
+                    tr
+                      th width="15%" Name
+                      th width="25%" ID
+                      th width="25%" Secret
+                      th width="25%" Token
+                      th width="10%" Status
+                  tbody
+                    - api_service.api_service_infos.each do |info|
+                      tr
+                        td = info.app_name
+                        td = info.app_id
+                        td = info.app_secret
+                        td
+                          - if info.app_token.present?
+                            button.btn.btn-sm.btn-default.btn-clipboard data-clipboard-text=(info.app_token) Copy ACCESS TOKEN to clipboard
+                          - else
+                            = link_to 'Generate ACCESS TOKEN', "#{instagram_index_path}?app_id=#{info.id}", target: '_blank'
+                        td
+                          - if info.active? && info.app_token.present?
+                            span.label.label-success Active
+                          - else
+                            span.label.label-warning Deactive
+
+javascript:
+
+  new Clipboard('.btn-clipboard');

@@ -7,6 +7,32 @@ class IronMan::RandPhotoService < IronMan::BaseService
   class << self
 
     def call
+      api_services = ApiService.where(status: true)
+      if api_services.count.zero?
+        original_call
+        return
+      else
+        api_service = api_services.first
+        if api_service.name.include?('Instagram')
+          post = Api::RandomPhotoService.call('instagram')
+          caption = post[:caption]
+          photo = post[:url]
+          RandomPhotoLog.create!(url: post)
+        end
+      end
+
+      photo = 'https://scontent.cdninstagram.com/t51.2885-15/sh0.08/e35/p640x640/20582547_1939995162950134_1873222055978074112_n.jpg' unless photo
+
+      unless caption
+        caption = PhotoDescription.all.count > 0 ? PhotoDescription.all.sample.description : ('Yêu cmnr :beauty:' || 'Chỉ là test thôi mà :joy:')
+      end
+
+      message = "#{caption} #{photo}"
+      channel = Json::Channel.working_channel
+      IronMan::SendMessageToChannelService.new(channel, message).call
+    end
+
+    def original_call
       photo = get_photo
       has_desc = false
       if photo.present?

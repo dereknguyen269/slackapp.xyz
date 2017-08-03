@@ -45,4 +45,8 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
   # config.action_cable.url = "ws://localhost:5000/cable"
+  config.after_initialize do
+    Rails.application.routes.default_url_options[:host] = ENV['SERVER_DOMAIN'] || 'localhost:3000'
+  end
+  config.browserify_rails.use_browserifyinc = true
 end

@@ -53,7 +53,9 @@ if ENV['DATABASE_URL'].blank?
 else
   after :deploy, 'prepare:development'
   after :'prepare:development', 'docker:export_env'
-  after :'docker:export_env', 'docker:build'
+  after :'docker:export_env', 'prepare:npm_install'
+  after :'prepare:npm_install', 'docker:build'
   after :'docker:build', 'docker:up'
-  after :'docker:up', 'slackbot:notify_deployed'
+  after :'docker:up', 'docker:assets'
+  after :'docker:assets', 'slackbot:notify_deployed'
 end

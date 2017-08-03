@@ -1,0 +1,13 @@
+.nested-fields
+  .form-group
+    = f.input :app_name, :error => false, input_html: { class: 'form-control'}
+  .form-group
+    = f.input :app_id, :error => false, input_html: { class: 'form-control'}
+  .form-group
+    = f.input :app_secret, :error => false, input_html: { class: 'form-control'}
+  .form-group
+    = f.input :app_token, :error => false, input_html: { class: 'form-control'}
+  .form-group
+    = f.input :status, collection: ApiServiceInfo.statuses.map{|s| [s[0], s[0]]}, input_html: { class: 'form-control'}, selected: f.object.status
+  = link_to_remove_association "remove", f
+hr
