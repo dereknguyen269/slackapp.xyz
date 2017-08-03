@@ -47,7 +47,7 @@ class InstagramController < ApplicationController
     end
 
     def instagram_apps
-      apis = ApiService.all
+      apis = ApiService.where(name: 'Instagram API')
       api_services = []
       if apis.count > 0
         arr = apis.select{|item| item.status == true}
