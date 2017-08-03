@@ -8,6 +8,6 @@
   .form-group
     = f.input :app_token, :error => false, input_html: { class: 'form-control'}
   .form-group
-    = f.input :status, :error => false, as: :check_boxes, checked_value: :active, unchecked_value: :deactive
+    = f.input :status, collection: ApiServiceInfo.statuses.map{|s| [s[0], s[0]]}, input_html: { class: 'form-control'}, selected: f.object.status
   = link_to_remove_association "remove", f
 hr

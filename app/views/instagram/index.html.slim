@@ -4,6 +4,17 @@
       .panel-heading
         h3.panel-title.text-center Welcome Slackapp.xyz
       .panel-body
+        - if @api_services.count.zero?
+          .alert.alert-warning.text-center
+            b Not now, please back later!
+          .text-center
+            - if current_user
+              = link_to 'Back To Admin', admin_root_path, class: 'btn btn-lg btn-success'
+            - else
+              = link_to 'Back To Home', root_path, class: 'btn btn-lg btn-success'
+        - else
           = render 'layouts/messages'
-          fieldset
-            = link_to 'Get Instagram Access Token', instagram_index_path, method: :post, class: 'btn btn-lg btn-primary btn-block'
+          = simple_form_for :instagram, url: instagram_index_path, method: :post do |f|
+            .form-group
+              = f.input :app_id, collection: @api_services.map{|item| ["APP - #{item.app_name}", item.id] }, input_html: { class: 'form-control'}, label: false, selected: params[:app_id].present? ? params[:app_id].to_i : @api_services.first.id
+            = f.button :submit, 'Get Instagram Access Token', class: 'btn btn-lg btn-primary btn-block'

@@ -27,5 +27,5 @@ Rails.application.routes.draw do
 end
 
 Rails.application.routes.named_routes.tap do |routes|
-  routes.add(:admin_root, routes.get(:admin_dashboard_index))
+  routes.add(:admin_root_path, routes.get(:admin_dashboard_index))
 end

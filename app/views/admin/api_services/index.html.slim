@@ -51,9 +51,17 @@
                         td = info.app_name
                         td = info.app_id
                         td = info.app_secret
-                        td = info.app_token
                         td
-                          - if info.active? && info.token.present?
+                          - if info.app_token.present?
+                            button.btn.btn-sm.btn-default.btn-clipboard data-clipboard-text=(info.app_token) Copy ACCESS TOKEN to clipboard
+                          - else
+                            = link_to 'Generate ACCESS TOKEN', "#{instagram_index_path}?app_id=#{info.id}", target: '_blank'
+                        td
+                          - if info.active? && info.app_token.present?
                             span.label.label-success Active
                           - else
                             span.label.label-warning Deactive
+
+javascript:
+
+  new Clipboard('.btn-clipboard');
