@@ -48,4 +48,5 @@ Rails.application.configure do
   config.after_initialize do
     Rails.application.routes.default_url_options[:host] = ENV['SERVER_DOMAIN'] || 'localhost:3000'
   end
+  config.browserify_rails.use_browserifyinc = true
 end

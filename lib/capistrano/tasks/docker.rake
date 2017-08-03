@@ -4,6 +4,8 @@ namespace :docker do
   task :export_env  do
     on roles(:app) do
       execute "cd #{current_path} && export DATABASE_URL=#{ENV['DATABASE_URL']}"
+      execute "cd #{current_path} && export DATABASE_REMOTE=true"
+      execute "cd #{current_path} && export ENABLED_BOT=true"
     end
   end
 
@@ -46,6 +48,13 @@ namespace :docker do
   task :setup_db do
     on roles(:app) do
       execute "cd #{current_path} && docker-compose run app rake db:create db:migrate db:seed"
+    end
+  end
+
+  desc "Run assets:precompile"
+  task :assets do
+    on roles(:app) do
+      execute "cd #{current_path} && docker-compose run app rake assets:precompile"
     end
   end
 
