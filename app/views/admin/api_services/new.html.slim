@@ -4,6 +4,10 @@
 
 .row
   .col-sm-6
-    h4 New
+    button.btn.btn-primary type="button"
+      | NEW&nbsp;
+    | &nbsp;
+    = link_to 'ALL', admin_api_services_path, class: 'btn btn-success'
     hr
-    = render 'form'
+    = simple_form_for @api_service, url: admin_api_services_path, method: :post do |f|
+      = render 'form', f:f
