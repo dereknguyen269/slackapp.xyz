@@ -4,6 +4,7 @@
 
 /vendor/bundle
 /vendor/assets/node_modules/
+node_modules/
 /.vagrant
 .DS_Store
 .byebug_history
