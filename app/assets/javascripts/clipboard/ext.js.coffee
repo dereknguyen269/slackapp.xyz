@@ -1,2 +1,2 @@
-#= require clipboard/dist/clipboard.min.js
+#= require clipboard
 #= require_tree ./after
