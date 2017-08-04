@@ -54,7 +54,7 @@ namespace :docker do
   desc "Run assets:precompile"
   task :assets do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose run app npm install --unsafe-perm && npm install"
+      execute "cd #{current_path} && docker-compose run app node --max-old-space-size=8192 $(which npm) install --unsafe-perm"
       execute "cd #{current_path} && docker-compose run app rake assets:precompile"
     end
   end
