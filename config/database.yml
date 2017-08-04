@@ -1,8 +1,7 @@
 default: &default
   adapter: <%= ENV['ADAPTER'] %>
   encoding: utf8
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASS'] %>
+  username: root
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV['DATABASE_URL'] %>
   min_messages: log

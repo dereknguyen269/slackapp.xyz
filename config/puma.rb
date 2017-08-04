@@ -14,7 +14,6 @@ enabled_bot =  ENV['ENABLED_BOT'] || false
 
 on_worker_boot do
   ActiveRecord::Base.establish_connection
-  # IronMan.run
 end
 
 # Allow puma to be restarted by `rails restart` command.

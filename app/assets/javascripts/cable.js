@@ -4,7 +4,6 @@
 //= require_self
 // require_tree ./channels
 
-ActionCable = require('actioncable-modules');
-window.App  = {}
+// ActionCable = require('actioncable-modules');
+// window.App  = {}
 //App.cable = ActionCable.createConsumer();
-console.log(App);

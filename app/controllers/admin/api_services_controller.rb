@@ -12,7 +12,7 @@ class Admin::ApiServicesController < Admin::BaseController
   def create
     @api_service = ApiService.create(api_service_params)
     if @api_service.save
-      redirect_to :action => 'index', :flash => {notice: 'API Service has been created successfully!'}
+      redirect_to admin_api_services_path, {notice: 'API Service has been created successfully!'}
     else
       render 'new'
     end
@@ -23,7 +23,7 @@ class Admin::ApiServicesController < Admin::BaseController
 
   def update
     if @api_service.update(api_service_params)
-      redirect_to edit_admin_api_service_path(@api_service), :flash => {notice: 'API Service has been updated successfully!'}
+      redirect_to edit_admin_api_service_path(@api_service), {notice: 'API Service has been updated successfully!'}
     else
       render 'edit'
     end
@@ -31,7 +31,7 @@ class Admin::ApiServicesController < Admin::BaseController
 
   def destroy
     if @api_service.destroy
-      redirect_to admin_api_services_path, :flash => {notice: 'API Service has been removed successfully!'}
+      redirect_to admin_api_services_path, {notice: 'API Service has been removed successfully!'}
     end
   end
 
