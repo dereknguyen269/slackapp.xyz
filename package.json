@@ -1,13 +1,7 @@
 {
-  "name": "slackbot",
-  "dependencies": {
-    "browserify": "^14.0.0",
-    "browserify-incremental": "^3.1.0",
-    "actioncable-modules": "^5.1.1",
-    "clipboard": "^1.7.1"
+  "scripts": {
+    "postinstall": "npm run vendor-assets",
+    "vendor-assets": "cd vendor/assets && npm prune && npm install && npm shrinkwrap"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">= 0.10"
-  }
+  "private": true
 }

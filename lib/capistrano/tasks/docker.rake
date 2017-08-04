@@ -26,7 +26,7 @@ namespace :docker do
   desc "docker-compose up -d --force-recreate"
   task :up do
     on roles(:web) do
-      execute "cd #{current_path} && docker-compose up -d --force-recreate"
+      execute "cd #{current_path} && docker-compose up -d"
     end
   end
 
@@ -55,7 +55,6 @@ namespace :docker do
   task :assets do
     on roles(:app) do
       execute "cd #{current_path} && docker-compose run app npm install"
-      execute "cd #{current_path} && docker-compose run app ./node_modules/.bin/browserify"
       execute "cd #{current_path} && docker-compose run app rake assets:precompile"
     end
   end

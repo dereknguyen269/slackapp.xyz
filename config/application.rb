@@ -18,10 +18,5 @@ module SlackBotOnRails
     config.autoload_paths << Rails.root.join('lib')
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :sidekiq
-
-    config.browserify_rails.paths << /vendor\/assets\/javascripts\/module\.js/
-    config.browserify_rails.source_map_environments << "development"
-    config.browserify_rails.evaluate_node_modules = true
-    config.browserify_rails.node_env = "production"
   end
 end
