@@ -26,10 +26,6 @@ ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV:-production}
 COPY . $APP_ROOT
 
-RUN npm install
-RUN rake assets:precompile
-RUN ./node_modules/.bin/browserify
-
 # Assets precompile
 RUN if [ $RAILS_ENV = 'production' ]; then bundle exec rake assets:precompile --trace; fi
 # Expose assets for web container
