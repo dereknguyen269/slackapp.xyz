@@ -42,6 +42,7 @@ gem 'twitter-bootstrap-rails'
 gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'clipboard-rails'
+gem 'toastr-rails'
 
 # User authentication and authorization
 gem 'devise', '~> 4.3.0'

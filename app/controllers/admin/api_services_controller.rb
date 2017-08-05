@@ -44,4 +44,5 @@ class Admin::ApiServicesController < Admin::BaseController
     def prepare_api_service
       @api_service = ApiService.find(params[:id])
     end
+
 end

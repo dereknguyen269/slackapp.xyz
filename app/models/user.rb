@@ -11,12 +11,13 @@
 #  sign_in_count          :integer          default(0), not null
 #  current_sign_in_at     :datetime
 #  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string
-#  last_sign_in_ip        :string
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  provider               :string
 #  uid                    :string
+#  user_type              :integer
 #
 # Indexes
 #
@@ -25,11 +26,17 @@
 #
 
 class User < ActiveRecord::Base
+  include ModelDefaults
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, :omniauth_providers => [:facebook]
+
+  enum user_type: %i(sadmin admin normal)
+
+  default :user_type, 2
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
