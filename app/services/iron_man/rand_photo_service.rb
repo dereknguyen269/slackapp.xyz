@@ -17,7 +17,7 @@ class IronMan::RandPhotoService < IronMan::BaseService
           post = Api::RandomPhotoService.call('instagram')
           caption = post[:caption]
           photo = post[:url]
-          RandomPhotoLog.create!(url: post)
+          RandomPhotoLog.create!(url: photo)
         end
       end
 

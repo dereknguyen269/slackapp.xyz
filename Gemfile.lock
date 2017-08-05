@@ -102,6 +102,7 @@ GEM
       timers (>= 4.1.1)
     celluloid-supervision (0.20.6)
       timers (>= 4.1.1)
+    clipboard-rails (1.7.1)
     cocoon (1.2.10)
     codemirror-rails (5.16.0)
       railties (>= 3.0, < 6.0)
@@ -411,6 +412,7 @@ DEPENDENCIES
   capistrano-figaro
   carrierwave (~> 1.0)
   celluloid-io
+  clipboard-rails
   cocoon
   coffee-rails (~> 4.1.0)
   colorize

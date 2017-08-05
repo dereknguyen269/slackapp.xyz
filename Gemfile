@@ -20,7 +20,6 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks'
 gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
-gem 'clipboard-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,6 +41,7 @@ gem 'slim-rails', '~> 3.1.0'
 gem 'twitter-bootstrap-rails'
 gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'clipboard-rails'
 
 # User authentication and authorization
 gem 'devise', '~> 4.3.0'
@@ -58,8 +58,8 @@ gem 'instagram', :git => 'git://github.com/facebookarchive/instagram-ruby-gem.gi
 gem 'figaro'
 
 # Third party
-gem 'rails_db'
 gem 'colorize'
+gem 'rails_db'
 
 # Calculate
 gem 'dentaku'
