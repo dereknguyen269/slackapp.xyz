@@ -1,0 +1,18 @@
+<script type="text/javascript">
+  var notice_message = null;
+  var error_message = null;
+  var success_message = null;
+
+  <%- flash.each do |name, msg| %>
+    <%- if name == 'error' %>
+      error_message = '<%= raw msg %>';
+    <% end %>
+    <%- if name == 'warning' %>
+      notice_message = '<%= raw msg %>';
+    <% end %>
+    <%- if name == 'success' || name == 'notice' %>
+      success_message = '<%= raw msg %>';
+    <% end %>
+  <% end %>
+
+</script>

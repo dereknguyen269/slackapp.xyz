@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title SlackApp.xyz | Admin Control Panel
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body data=body_data class=body_css_class
+    #wrapper
+      = render 'layouts/navigation'
+      #page-wrapper
+        .container-fluid
+          = yield
+  javascript:
+  = render 'shared/toastr'

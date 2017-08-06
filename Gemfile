@@ -6,24 +6,13 @@ gem 'pg'
 # Use mysql as the database for Active Record
 # gem 'mysql2', '>= 0.3.18', '< 0.5'
 
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-# Use jquery as the JavaScript library
 gem 'jquery-rails', '4.3.1'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
-gem 'clipboard-rails'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Slack Bot
 gem 'slack-ruby-bot'
@@ -42,6 +31,8 @@ gem 'slim-rails', '~> 3.1.0'
 gem 'twitter-bootstrap-rails'
 gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'clipboard-rails'
+gem 'toastr-rails'
 
 # User authentication and authorization
 gem 'devise', '~> 4.3.0'
@@ -58,8 +49,8 @@ gem 'instagram', :git => 'git://github.com/facebookarchive/instagram-ruby-gem.gi
 gem 'figaro'
 
 # Third party
-gem 'rails_db'
 gem 'colorize'
+gem 'rails_db'
 
 # Calculate
 gem 'dentaku'
@@ -78,6 +69,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
 # Same as Rails 5+
+gem 'activesupport', '~> 4.2'
 gem 'actionpack', '~> 4.2', '>= 4.2.9'
 gem 'activejob', '~> 4.2', '>= 4.2.9'
 
@@ -100,25 +92,36 @@ gem 'binding_of_caller'
 # Manage Procfile
 gem 'foreman'
 
-group :development, :test do
-  gem 'byebug'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'shoulda-matchers', '~> 3.1'
-  gem 'faker'
-  gem 'database_cleaner'
-end
+gem 'rspec-rails', '3.6.0'
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'listen', '~> 3.0.5'
-  # Spring speeds up development by keeping your application running in the background.
   gem "spring"
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard-rspec', require: false
+end
+
+group :development, :test do
+  gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'pry-rails'
+  gem 'railroady'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'timecop'
+  gem 'webmock'
 end
 
 # Auto deploy with capistrano
 group :development do
   gem "capistrano", "~> 3.8"
   gem 'capistrano-figaro'
+end
+
+group :production do
+  gem 'therubyracer'
 end

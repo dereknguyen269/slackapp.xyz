@@ -1,0 +1,9 @@
+table {
+  &.table-none-border {
+    border: 0 !important;
+
+    tr, th, td {
+      border: 0 !important;
+    }
+  }
+}

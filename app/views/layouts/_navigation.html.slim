@@ -1,0 +1,36 @@
+nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0")
+  .navbar-header
+    button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    = link_to root_path, class: 'navbar-brand', target: '_blank' do
+      i.fa.fa-slack aria-hidden="true"
+      | &nbsp;SlackApp.xyz
+  ul.nav.navbar-top-links.navbar-right style="margin-right: 20px"
+    li
+      a href=admin_mypage_index_path
+        - if current_user.sadmin?
+          span.label.label-danger SADMIN
+        - elsif current_user.admin?
+          span.label.label-warning ADMIN
+
+        i.fa.fa-user.fa-fw
+        = current_user.profile_name
+    | &nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+    = link_to('Logout', destroy_user_session_path, :method => :delete)
+
+  .navbar-default.sidebar role="navigation"
+    .sidebar-nav.navbar-collapse
+      ul#side-menu.nav
+        li
+          a href=admin_root_path
+            i.fa.fa-comment aria-hidden="true"
+            | &nbsp;Message
+          a href=admin_api_services_path
+            i.fa.fa-cloud aria-hidden="true"
+            | &nbsp;API Services
+          a href=admin_workers_path
+            i.fa.fa-tasks aria-hidden="true"
+            | &nbsp;Workers

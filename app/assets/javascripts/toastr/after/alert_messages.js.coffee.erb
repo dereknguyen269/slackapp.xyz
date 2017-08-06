@@ -1,0 +1,16 @@
+'use strict'
+
+$(document).on 'ready page:load', ->
+  toastr.options.closeButton = true;
+  toastr.options.closeMethod = 'fadeOut';
+  toastr.options.closeDuration = 300;
+  toastr.options.closeEasing = 'swing';
+
+  if error_message != null
+    toastr.error(error_message, 'Error!')
+
+  if notice_message != null
+    toastr.warning(notice_message, 'Warning!')
+
+  if success_message != null
+    toastr.success(success_message, 'Success!')

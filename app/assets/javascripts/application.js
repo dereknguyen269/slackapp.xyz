@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require cocoon
+//= require_tree ./toastr
 //= require_tree ./admin
 //= require_tree ./clipboard
-//= require cocoon

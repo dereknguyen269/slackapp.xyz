@@ -11,5 +11,6 @@
  * file per style scope.
  *
  *= require font-awesome
+ *= require toastr
  *= require_tree ./home
  */

@@ -1,0 +1,10 @@
+.row
+  .col-lg-12
+    h1.page-header  Profile's #{@user.profile_name}
+
+.row
+  .col-sm-6
+    = link_to 'BACK', admin_mypage_index_path, class: 'btn btn-primary'
+    hr
+    = simple_form_for @user, url: admin_mypage_index_path, method: :put do |f|
+      = render 'form', f: f

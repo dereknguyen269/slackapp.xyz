@@ -12,9 +12,14 @@ Rails.application.routes.draw do
   namespace :admin, path: 'admin' do
     root 'dashboard#index'
     resources :dashboard, only: [:index, :create]
-    resources :photo_attrs
     resources :workers, only: :index
     resources :api_services
+    resources :mypage, only: :index do
+      collection do
+        get :edit
+        put :update
+      end
+    end
   end
 
   resources :instagram, only: [:index, :create] do

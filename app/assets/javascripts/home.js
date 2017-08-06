@@ -18,3 +18,4 @@
 //= require home/photoswipe-ui-default.min.js
 //= require home/jquery.mCustomScrollbar.concat.min.js
 //= require home/script.js
+//= require toastr
