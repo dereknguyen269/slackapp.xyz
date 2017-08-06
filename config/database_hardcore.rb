@@ -51,8 +51,19 @@ module Rails
           config['development'] = default_development.merge(opts)
         end
 
-        puts "----DBCONFIG-------"
+        default_test = config['test']
+        default_test.delete('url') if default_test.has_key?('url')
+        default_test.delete('username') if default_test.has_key?('username')
+        default_test.delete('password') if default_test.has_key?('password')
+        opts = {
+          'database' => "#{ENV['DATABASE_NAME'] || 'db_name'}_test"
+        }
+        config['test'] = default_test.merge(opts)
+
+        puts "----DEVVELOPMENT DBCONFIG-------"
         puts config['development'].inspect
+        puts "----TEST DBCONFIG-------"
+        puts config['test'].inspect
         puts "----DBCONFIG-------"
         config
       rescue Psych::SyntaxError => e

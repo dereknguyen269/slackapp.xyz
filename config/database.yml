@@ -12,8 +12,6 @@ development:
 
 test:
   <<: *default
-  username:
-  password:
   database: <%= ENV['DATABASE_NAME'] %>_<%= Rails.env %>
 
 production:
