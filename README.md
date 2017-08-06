@@ -37,6 +37,12 @@ Start:
 rails s
 ```
 
+or
+
+```
+./bin/server
+```
+
 Access this url: [localhost:3000](http://localhost:3000)
 
 ## Setup with Docker

@@ -1,0 +1,42 @@
+.row
+  .col-lg-12
+    h1.page-header Profile's #{@user.profile_name}
+
+.row
+  .col-sm-12
+    = link_to 'EDIT YOUR PROFILE', edit_admin_mypage_index_path, class: 'btn btn-primary'
+    hr
+    table.table.table-none-border
+      tbody
+        tr
+          th Email
+          td
+            span.label.label-info #{@user.email}
+        tr
+          th Username
+          td
+            - if @user.username
+              span.label.label-success #{@user.username}
+            - else
+              = link_to 'update', edit_admin_mypage_index_path, class: 'btn btn-sm btn-default'
+        tr
+          th User Type
+          td
+            - if @user.sadmin?
+              span.label.label-danger Super Admin
+            - elsif @user.admin?
+              span.label.label-warning Admin
+            - else
+              span.label.label-default Normal User
+        tr
+          th Last Sign In At
+          td = datetime_with_format(@user.last_sign_in_at)
+        tr
+          th Last Sign In IP
+          td = @user.last_sign_in_ip
+        tr
+          th Current Sign In IP
+          td = @user.current_sign_in_ip
+        tr
+          th Last Updated At
+          td = datetime_with_format(@user.updated_at)

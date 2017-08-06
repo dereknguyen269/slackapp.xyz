@@ -1,0 +1,13 @@
+= render partial: 'shared/form_error', locals: {errors: @user.errors.full_messages}
+.form-group
+  = f.input :email, as: :email, :error => false, input_html: { class: 'form-control'}
+.form-group
+  = f.input :username, disabled: @user.has_username?, :error => false, input_html: { class: 'form-control'}
+.form-group
+  = f.input :password, as: :password, :autocomplete => 'off', :error => false, input_html: { class: 'form-control'}
+.form-group
+  = f.input :password_confirmation, as: :password, :autocomplete => 'off', :error => false, input_html: { class: 'form-control'}
+.form-group
+  = f.input :current_password, as: :password, :autocomplete => 'off', :error => false, input_html: { class: 'form-control'}
+
+= f.button :submit, 'Update', class: 'btn btn-primary'

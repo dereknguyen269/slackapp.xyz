@@ -15,6 +15,7 @@
  *= require simple_form
  *= require font-awesome
  *= require_tree ./admin
+ *= require table
  *= require toastr
  *= require_self
  */

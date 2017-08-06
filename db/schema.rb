@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805074626) do
+ActiveRecord::Schema.define(version: 20170806035407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,19 +44,6 @@ ActiveRecord::Schema.define(version: 20170805074626) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "photo_attrs", force: :cascade do |t|
-    t.string   "name"
-    t.string   "site"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "photo_descriptions", force: :cascade do |t|
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "photo_keywords", force: :cascade do |t|
     t.string   "keyword",    null: false
     t.datetime "created_at", null: false
@@ -85,6 +72,8 @@ ActiveRecord::Schema.define(version: 20170805074626) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_type"
+    t.string   "username"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
