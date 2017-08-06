@@ -1,0 +1,5 @@
+database:
+  override:
+    - mv scripts/circle/database.yml config/database.yml
+    - mv scripts/circle/application.rb config/application.rb
+    - bundle exec rake db:create db:schema:load --trace
