@@ -1,0 +1,9 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  min_messages: log
+
+test:
+  <<: *default
+  database: slackapp_test
