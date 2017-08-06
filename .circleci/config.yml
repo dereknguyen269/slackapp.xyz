@@ -12,7 +12,7 @@ jobs:
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/postgres:9.4
 
     working_directory: ~/repo
 
@@ -37,8 +37,8 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
-      - run: mv scripts/circle/database.yml config/database.yml
-      - run: mv scripts/circle/application.rb config/application.rb
+      - run: mv /scripts/circle/database.yml /config/database.yml
+      - run: mv /scripts/circle/application.rb /config/application.rb
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
