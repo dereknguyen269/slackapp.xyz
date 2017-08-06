@@ -43,7 +43,7 @@ jobs:
 
       - run:
           name: Database setup
-          command: bin/bundle exec db:schema:load
+          command: bin/bundle exec rake db:schema:load
 
       - run:
           name: Run rspec
