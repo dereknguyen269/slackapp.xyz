@@ -1,50 +1,60 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
 version: 2
 jobs:
   build:
+    working_directory: ~/myapp
     docker:
-      # specify the version you desire here
-       - image: circleci/ruby:2.4.1-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
+      - image: circleci/ruby:2.3-node
+      - image: circleci/postgres:9.5-alpine
 
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
+          name: Restore bundle cache
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - myapp-bundle-{{ checksum "Gemfile.lock" }}
+            - myapp-bundle-
+
+      - restore_cache:
+          name: Restore yarn cache
+          keys:
+            - myapp-yarn-{{ checksum "yarn.lock" }}
+            - myapp-yarn-
 
       - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+          name: Prepare circleci files
+          command: cp scripts/circleci/database.yml config/database.yml && cp scripts/circleci/application.rb config/application.rb
+
+      - run:
+          name: Bundle Install
+          command: bin/bundle check --path vendor/bundle ||  bin/bundle install --path vendor/bundle --jobs 4 --retry 3
+
+      - run:
+          name: Yarn Install
+          command: yarn install
 
       - save_cache:
+          name: Store bundle cache
+          key: myapp-bundle-{{ checksum "Gemfile.lock" }}
           paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - vendor/bundle
 
-      # Database setup
-      - run: mv /scripts/circle/database.yml /config/database.yml
-      - run: mv /scripts/circle/application.rb /config/application.rb
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - save_cache:
+          name: Store yarn cache
+          key: myapp-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.yarn-cache
 
-      # run tests!
       - run:
-          name: run tests
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bin/bundle exec rake db:create db:schema:load
+
+      - run:
+          name: Run rspec
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
