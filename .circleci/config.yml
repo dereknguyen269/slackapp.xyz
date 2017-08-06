@@ -37,6 +37,8 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
+      - run: mv scripts/circle/database.yml config/database.yml
+      - run: mv scripts/circle/application.rb config/application.rb
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
@@ -59,9 +61,3 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-
-database:
-  override:
-    - mv scripts/circle/database.yml config/database.yml
-    - mv scripts/circle/application.rb config/application.rb
-    - bundle exec rake db:create db:schema:load --trace
