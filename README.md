@@ -5,9 +5,11 @@ SlackApp.xyz
 
 > Slack Bot App :heart: with Rails
 
+![](/app/assets/images/home.png)
+
 ![](/app/assets/images/login-screen.png)
 
-![](/app/assets/images/dashboard-screen.png)
+![](/app/assets/images/admin.png)
 
 If use with Postgres:
 
