@@ -4,7 +4,15 @@ jobs:
     working_directory: ~/myapp
     docker:
       - image: circleci/ruby:2.3-node
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: slackapp
+          RAILS_ENV: test
       - image: circleci/postgres:9.5-alpine
+        environment:
+          POSTGRES_USER: slackapp
+          POSTGRES_DB: slackapp_test
+          POSTGRES_PASSWORD: ""
 
     steps:
       - checkout
@@ -15,12 +23,6 @@ jobs:
             - myapp-bundle-{{ checksum "Gemfile.lock" }}
             - myapp-bundle-
 
-      - restore_cache:
-          name: Restore yarn cache
-          keys:
-            - myapp-yarn-{{ checksum "yarn.lock" }}
-            - myapp-yarn-
-
       - run:
           name: Prepare circleci files
           command: cp scripts/circleci/database.yml config/database.yml && cp scripts/circleci/application.rb config/application.rb
@@ -29,21 +31,11 @@ jobs:
           name: Bundle Install
           command: bin/bundle check --path vendor/bundle ||  bin/bundle install --path vendor/bundle --jobs 4 --retry 3
 
-      - run:
-          name: Yarn Install
-          command: yarn install
-
       - save_cache:
           name: Store bundle cache
           key: myapp-bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
-      - save_cache:
-          name: Store yarn cache
-          key: myapp-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.yarn-cache
 
       - run:
           name: Wait for DB
@@ -51,7 +43,7 @@ jobs:
 
       - run:
           name: Database setup
-          command: bin/bundle exec rake db:create db:schema:load
+          command: bin/bundle exec db:schema:load
 
       - run:
           name: Run rspec
