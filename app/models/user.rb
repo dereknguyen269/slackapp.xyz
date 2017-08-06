@@ -36,11 +36,17 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
 
   enum user_type: %i(sadmin admin normal)
-  validates :username, uniqueness: true, length: { minimum: 6, maximum: 20 }, on: :update
+  validates :username, uniqueness: true, length: { minimum: 6, maximum: 20 }, on: :update, if: :update_without_username
 
   default :user_type, 2
 
+  attr_accessor :without_username
+
   def has_username?
     self.username.present?
+  end
+
+  def update_without_username
+    self.without_username
   end
 end

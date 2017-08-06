@@ -3,6 +3,6 @@ if Rails.env.development?
   user = User.find_or_create_by!(email: 'quannguyen@bestcoder.info') do |u|
     u.password = 123123123
   end
-  user.sadmin!
+  user.update(user_type: 0, without_username: true)
   puts ' Done!'
 end

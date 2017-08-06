@@ -37,6 +37,14 @@ namespace :docker do
     end
   end
 
+  desc "delete networks"
+  task :remove_networks do
+    on roles(:web) do
+      execute "cd #{current_path} && docker network ls | grep \"bridge\""
+      execute "cd #{current_path} && docker network rm $(docker network ls | grep \"bridge\" | awk '/ / { print $1 }')"
+    end
+  end
+
   desc "Review running containners"
   task :review do
     on roles(:app) do
@@ -51,11 +59,17 @@ namespace :docker do
     end
   end
 
+  desc "Run db:migrate"
+  task :db_migration do
+    on roles(:app) do
+      execute "cd #{current_path} && docker-compose run rake app db:migrate db:seed"
+    end
+  end
+
   desc "Run assets:precompile"
   task :assets do
     on roles(:app) do
       execute "cd #{current_path} && docker-compose run app rake assets:clean"
-      # execute "cd #{current_path} && docker-compose run app node --max-old-space-size=8192 $(which npm) install --unsafe-perm"
       execute "cd #{current_path} && docker-compose run app rake assets:precompile"
     end
   end
