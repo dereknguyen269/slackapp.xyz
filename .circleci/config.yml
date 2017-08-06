@@ -8,6 +8,7 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: slackapp
           RAILS_ENV: test
+          SECRET_KEY_BASE: 5472622b82a1e5cda28c07042e5df64057ec29d2859d91bc2721347065b2d050ff81c228c07495c346a8d2f63d4c88075bd1fc3e2259c548e84ec83f1e1e739d
       - image: circleci/postgres:9.5-alpine
         environment:
           POSTGRES_USER: slackapp
