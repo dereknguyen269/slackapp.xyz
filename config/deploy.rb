@@ -54,7 +54,10 @@ else
   after :deploy, 'prepare:development'
   after :'prepare:development', 'docker:export_env'
   after :'docker:export_env', 'docker:build'
-  after :'docker:build', 'docker:up'
+  after :'docker:build', :'docker:stop_and_remove_with_except'
+  after :'docker:stop_and_remove_with_except', 'docker:remove_networks'
+  after :'docker:remove_networks', 'docker:up'
   after :'docker:up', 'docker:assets'
-  after :'docker:assets', 'slackbot:notify_deployed'
+  after :'docker:assets', 'docker:db_migration'
+  after :'docker:db_migration', 'slackbot:notify_deployed'
 end

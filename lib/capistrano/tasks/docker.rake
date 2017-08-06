@@ -37,6 +37,15 @@ namespace :docker do
     end
   end
 
+  desc "Stop all dockers except postgres server"
+  task :stop_and_remove_with_except do
+    on roles(:web) do
+      execute "cd #{current_path} && docker stop $(docker ps -a | grep -v \"slackapp_postgres_server_production\" | awk '{print $1}')"
+      execute "cd #{current_path} && docker stop $(docker ps -a | grep -v \"slackapp_postgres_server_production\" | cut -d ' ' -f1)"
+      execute "cd #{current_path} && docker rm $(docker ps -a | grep -v \"slackapp_postgres_server_production\" | cut -d ' ' -f1)"
+    end
+  end
+
   desc "delete networks"
   task :remove_networks do
     on roles(:web) do
