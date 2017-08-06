@@ -1,7 +1,9 @@
-Admin Slack Bot With Rails
+SlackApp.xyz
 ==================
 
 [![CircleCI](https://circleci.com/gh/minhquan4080/slackapp.xyz/tree/master.svg?style=svg)](https://circleci.com/gh/minhquan4080/slackapp.xyz/tree/master)
+
+> Slack Bot App :heart: with Rails
 
 ![](/app/assets/images/login-screen.png)
 
