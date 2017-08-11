@@ -10,7 +10,7 @@
 #  api_url    :string
 #
 
-class ApiService < ActiveRecord::Base
+class ApiService < ApplicationRecord
   has_many :api_service_infos, :foreign_key => :api_services_id, class_name: 'ApiServiceInfo'
   accepts_nested_attributes_for :api_service_infos, allow_destroy: true
 

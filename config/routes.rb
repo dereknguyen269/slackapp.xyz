@@ -27,8 +27,6 @@ Rails.application.routes.draw do
       get :callback
     end
   end
-
- # mount ActionCable.server => '/cable'
 end
 
 Rails.application.routes.named_routes.tap do |routes|

@@ -1,4 +1,4 @@
-class CreateCommand < ActiveRecord::Migration
+class CreateCommand < ActiveRecord::Migration[4.2]
   def change
     create_table :commands do |t|
       t.string :name, null: false

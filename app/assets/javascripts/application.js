@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require cocoon
+//= require cable
 //= require_tree ./toastr
 //= require_tree ./admin
 //= require_tree ./clipboard

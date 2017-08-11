@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 
-class RandomPhotoLog < ActiveRecord::Base
+class RandomPhotoLog < ApplicationRecord
 end

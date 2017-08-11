@@ -9,6 +9,6 @@
 #  updated_at :datetime         not null
 #
 
-class Command < ActiveRecord::Base
+class Command < ApplicationRecord
   scoped_search on: [:name]
 end

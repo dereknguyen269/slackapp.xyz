@@ -7,7 +7,7 @@
 #  app_id          :string           not null
 #  app_secret      :string           not null
 #  app_token       :string
-#  status          :integer          default(0), not null
+#  status          :integer          default("deactive"), not null
 #  api_services_id :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -17,7 +17,7 @@
 #  index_api_service_infos_on_api_services_id  (api_services_id)
 #
 
-class ApiServiceInfo < ActiveRecord::Base
+class ApiServiceInfo < ApplicationRecord
   belongs_to :api_services, :foreign_key => :api_services_id
 
   enum status: %i(deactive active)

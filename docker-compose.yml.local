@@ -1,0 +1,81 @@
+version: '2'
+services:
+  app:
+    image: slackbot:latest
+    build:
+      context: .
+      args:
+        RAILS_ENV: development
+    volumes:
+      - public_data:/opt/app/public
+      - ./log:/opt/app/log
+      - assets:/usr/app/slackbot/public/assets
+    environment:
+      SECRET_KEY_BASE: '807d0204fb8af4cdfab32638782d87009a9a9426731e520d5a7efbc12140b5841dcae537a1639348f69d2a8735af52fab85f10e9145e102a814902f08d35c56a'
+      DATABASE_URL: 'postgresql://postgres:postgres@db/slack_bot_development'
+      REDIS_URL:    'redis://redis:6379'
+    links:
+      - db
+      - redis
+    command: bundle exec rails s
+  db:
+    image: postgres
+    environment:
+      DATABASE: slack_bot_development
+      USER: postgres
+      PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      # Mount the DB dumps folder into the container, to be able to create & access database dumps:
+      - ./db/dumps:/db/dumps
+      # Mount out tmp folder, we might want to have access to something there during development:
+      - ./tmp:/tmp
+      # Mount our 'restoredb' script:
+      - ./bin/restoredb:/bin/restoredb:ro
+      # Mount our 'dumpdb' script:
+      - ./bin/dumpdb:/bin/dumpdb:ro
+      # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
+      - postgres-data:/var/lib/postgresql/data
+  web:
+    build: containers/nginx
+    volumes:
+      - ./log:/opt/app/log
+      - ./tmp:/opt/app/tmp
+      - public_data:/opt/app/public
+    ports:
+      - "80:80"
+    links:
+      - app
+  worker:
+    build:
+      context: .
+      args:
+        RAILS_ENV: development
+    volumes:
+      - /data
+    environment:
+      RAILS_ENV: development
+      # DATABASE_URL: 'postgresql://postgres:postgres@db/slack_bot_development'
+      REDIS_URL:    'redis://redis:6379'
+    links:
+      # - db
+      - redis
+    command: [bundle, exec, sidekiq, -C, containers/app/sidekiq.yml]
+  redis:
+    image: redis:3.0
+    volumes:
+      - /data
+    ports:
+      - "6379"
+volumes:
+  postgres-data:
+    driver: local
+  assets:
+    external: false
+  public_data:
+    external:
+      name: public_data_volume
+  data:
+    external:
+      name: data_volume
