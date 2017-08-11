@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2', '>= 4.2.9'
+gem 'rails', '~> 5.1', '>= 5.1.3'
 # Use Postgres as the database for Active Record
 gem 'pg'
 # Use mysql as the database for Active Record
 # gem 'mysql2', '>= 0.3.18', '< 0.5'
 
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails', '4.3.1'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'jquery-rails'
 gem 'turbolinks'
-gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets'
 gem 'sprockets-es6'
 
 # Slack Bot
@@ -27,12 +27,12 @@ gem 'cocoon'
 gem 'carrierwave', '~> 1.0'
 
 # Front-end
-gem 'slim-rails', '~> 3.1.0'
+gem 'slim-rails', '~> 3.1.2'
 gem 'twitter-bootstrap-rails'
-gem "font-awesome-rails"
+gem "font-awesome-rails", '~> 4.7.0.2'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'clipboard-rails'
-gem 'toastr-rails'
+gem 'toastr-rails', '~> 1.0.3'
 
 # User authentication and authorization
 gem 'devise', '~> 4.3.0'
@@ -41,6 +41,7 @@ gem 'pundit'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-instagram'
+gem 'warden'
 
 # Support gems
 gem 'instagram', :git => 'git://github.com/facebookarchive/instagram-ruby-gem.git'
@@ -50,7 +51,7 @@ gem 'figaro'
 
 # Third party
 gem 'colorize'
-gem 'rails_db'
+gem 'rails_db', '~> 1.6.0'
 
 # Calculate
 gem 'dentaku'
@@ -67,11 +68,6 @@ gem 'puma', '~> 3.0'
 # ActiveJob
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
-
-# Same as Rails 5+
-gem 'activesupport', '~> 4.2'
-gem 'actionpack', '~> 4.2', '>= 4.2.9'
-gem 'activejob', '~> 4.2', '>= 4.2.9'
 
 # Store files in Rails applications
 # gem "activestorage", git: "https://github.com/rails/activestorage.git"
@@ -93,10 +89,10 @@ gem 'binding_of_caller'
 gem 'foreman'
 
 gem 'rspec-rails', '3.6.0'
+gem 'listen'
 
 group :development do
-  gem 'web-console', '~> 2.0'
-  gem 'listen', '~> 3.0.5'
+  gem 'web-console', '~> 2.3.0'
   gem "spring"
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-rspec', require: false
@@ -104,7 +100,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.8.0'
   gem 'pry-rails'
   gem 'railroady'
 end

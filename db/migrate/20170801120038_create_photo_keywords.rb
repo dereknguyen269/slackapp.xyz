@@ -1,4 +1,4 @@
-class CreatePhotoKeywords < ActiveRecord::Migration
+class CreatePhotoKeywords < ActiveRecord::Migration[4.2]
   def change
     create_table :photo_keywords do |t|
       t.string :keyword, null: false

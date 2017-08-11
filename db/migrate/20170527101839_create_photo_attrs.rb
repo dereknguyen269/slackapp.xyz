@@ -1,4 +1,4 @@
-class CreatePhotoAttrs < ActiveRecord::Migration
+class CreatePhotoAttrs < ActiveRecord::Migration[4.2]
   def change
     create_table :photo_attrs do |t|
       t.string :name

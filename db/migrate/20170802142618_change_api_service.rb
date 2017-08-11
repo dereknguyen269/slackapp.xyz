@@ -1,4 +1,4 @@
-class ChangeApiService < ActiveRecord::Migration
+class ChangeApiService < ActiveRecord::Migration[4.2]
   def change
     remove_column :api_services, :app_id, :string
     remove_column :api_services, :token, :string

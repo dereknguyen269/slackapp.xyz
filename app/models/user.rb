@@ -11,8 +11,8 @@
 #  sign_in_count          :integer          default(0), not null
 #  current_sign_in_at     :datetime
 #  last_sign_in_at        :datetime
-#  current_sign_in_ip     :inet
-#  last_sign_in_ip        :inet
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  provider               :string
@@ -27,7 +27,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include ModelDefaults
   include Profile
   # Include default devise modules. Others available are:

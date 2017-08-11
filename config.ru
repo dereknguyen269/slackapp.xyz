@@ -3,7 +3,7 @@
 require ::File.expand_path('../config/environment', __FILE__)
 
 enabled_bot = ENV['ENABLED_BOT'] || false
-enabled_bot = ActiveRecord::Type::Boolean.new.type_cast_from_user(enabled_bot)
+enabled_bot = ActiveRecord::Type::Boolean.new.cast(enabled_bot)
 
 Thread.abort_on_exception = true
 Thread.new do

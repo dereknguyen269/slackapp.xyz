@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 
-class PhotoKeyword < ActiveRecord::Base
+class PhotoKeyword < ApplicationRecord
 end

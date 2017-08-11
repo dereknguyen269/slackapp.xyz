@@ -1,4 +1,4 @@
-class CreateApiServices < ActiveRecord::Migration
+class CreateApiServices < ActiveRecord::Migration[4.2]
   def change
     create_table :api_services do |t|
       t.string :name, null: false, default: ''

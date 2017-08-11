@@ -1,4 +1,4 @@
-App.room = App.cable.subscriptions.create "RoomChannel",
+App.room = App.cable.subscriptions.create "SlackappNotifyChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -7,8 +7,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
-    alert(data)
+    console.log(data)
 
   speak: (data) ->
-    @perform 'speak', data: data
+    @perform 'speak', slackapp_data: data
 
