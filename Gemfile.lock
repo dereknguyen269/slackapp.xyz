@@ -459,7 +459,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.6)
   byebug
-  capistrano (~> 3.8)
+  capistrano (~> 3.9)
   capistrano-figaro
   carrierwave (~> 1.0)
   celluloid-io
