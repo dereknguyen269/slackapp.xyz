@@ -11,7 +11,7 @@
 #
 
 class ApiService < ApplicationRecord
-  has_many :api_service_infos, :foreign_key => :api_services_id, class_name: 'ApiServiceInfo'
+  has_many :api_service_infos
   accepts_nested_attributes_for :api_service_infos, allow_destroy: true
 
   validates :name, uniqueness: true, presence: true
