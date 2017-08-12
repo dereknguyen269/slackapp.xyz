@@ -12,7 +12,7 @@ namespace :docker do
   desc "docker-compose build --no-cache"
   task :build do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose build --force-rm"
+      execute "cd #{current_path} && docker-compose build --no-cache"
     end
   end
 
@@ -64,14 +64,14 @@ namespace :docker do
   desc "Setup Database"
   task :setup_db do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose run app rake db:create db:migrate db:seed"
+      execute "cd #{current_path} && docker-compose run app rails db:create db:migrate db:seed"
     end
   end
 
   desc "Run db:migrate"
   task :db_migration do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose run app rake db:migrate db:seed"
+      execute "cd #{current_path} && docker-compose run app rails db:migrate db:seed"
     end
   end
 
@@ -86,7 +86,7 @@ namespace :docker do
   desc "Reset Database"
   task :reset_db do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose run app rake db:drop db:create db:migrate db:seed"
+      execute "cd #{current_path} && docker-compose run app rails db:drop db:create db:migrate db:seed"
     end
   end
 
