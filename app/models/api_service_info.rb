@@ -2,23 +2,23 @@
 #
 # Table name: api_service_infos
 #
-#  id              :integer          not null, primary key
-#  app_name        :string           not null
-#  app_id          :string           not null
-#  app_secret      :string           not null
-#  app_token       :string
-#  status          :integer          default("deactive"), not null
-#  api_services_id :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id             :integer          not null, primary key
+#  app_name       :string           not null
+#  app_id         :string           not null
+#  app_secret     :string           not null
+#  app_token      :string
+#  status         :integer          default("deactive"), not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  api_service_id :integer
 #
 # Indexes
 #
-#  index_api_service_infos_on_api_services_id  (api_services_id)
+#  index_api_service_infos_on_api_service_id  (api_service_id)
 #
 
 class ApiServiceInfo < ApplicationRecord
-  belongs_to :api_services, :foreign_key => :api_services_id
+  belongs_to :api_service
 
   enum status: %i(deactive active)
 end

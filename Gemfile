@@ -112,12 +112,12 @@ group :test do
   gem 'webmock'
 end
 
-# Auto deploy with capistrano
-group :development do
-  gem "capistrano", "~> 3.8"
-  gem 'capistrano-figaro'
-end
-
 group :production do
   gem 'therubyracer'
+end
+
+group :development do
+  # Auto deploy with capistrano
+  gem "capistrano", "~> 3.9"
+  gem 'capistrano-figaro'
 end

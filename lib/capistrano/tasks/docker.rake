@@ -12,7 +12,7 @@ namespace :docker do
   desc "docker-compose build --no-cache"
   task :build do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose build --force-rm "
+      execute "cd #{current_path} && docker-compose build --force-rm"
     end
   end
 
@@ -71,7 +71,7 @@ namespace :docker do
   desc "Run db:migrate"
   task :db_migration do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose run rake app db:migrate db:seed"
+      execute "cd #{current_path} && docker-compose run app rake db:migrate db:seed"
     end
   end
 
