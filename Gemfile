@@ -44,7 +44,7 @@ gem 'omniauth-instagram'
 gem 'warden'
 
 # Support gems
-gem 'instagram', :git => 'git://github.com/facebookarchive/instagram-ruby-gem.git'
+gem 'instagram'
 
 # Config
 gem 'figaro'
