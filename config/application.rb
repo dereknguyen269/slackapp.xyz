@@ -19,5 +19,8 @@ module SlackBotOnRails
     config.i18n.default_locale = :en
     config.autoload_paths << Rails.root.join('lib')
     config.active_job.queue_adapter = :sidekiq
+    config.after_initialize do
+      Rails.application.routes.default_url_options[:host] = ENV['SERVER_DOMAIN'] || 'localhost:3000'
+    end
   end
 end

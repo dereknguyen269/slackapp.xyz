@@ -1,2 +1,4 @@
 #!/bin/bash
+bundle update
+bundle install
 bundle exec foreman start -f Procfile.dev
