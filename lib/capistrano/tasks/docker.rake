@@ -12,7 +12,7 @@ namespace :docker do
   desc "docker-compose build --no-cache"
   task :build do
     on roles(:app) do
-      execute "cd #{current_path} && docker-compose build --no-cache"
+      execute "cd #{current_path} && docker-compose build"
     end
   end
 
