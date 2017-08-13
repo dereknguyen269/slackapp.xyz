@@ -49,8 +49,8 @@ namespace :docker do
   desc "delete networks"
   task :remove_networks do
     on roles(:web) do
-      execute "cd #{current_path} && docker network ls | grep \"bridge\""
-      execute "cd #{current_path} && docker network rm $(docker network ls | grep \"bridge\" | awk '/ / { print $1 }')"
+      system "cd #{current_path} && docker network ls | grep \"bridge\""
+      system "cd #{current_path} && docker network rm $(docker network ls | grep \"bridge\" | awk '/ / { print $1 }')"
     end
   end
 
@@ -101,9 +101,9 @@ namespace :docker do
   desc "Destroy all containners and images"
   task :destroy do
     on roles(:app) do
-      execute "docker stop $(docker ps -a -q)"
-      execute "docker rm $(docker ps -a -q)"
-      execute "docker rmi -f $(docker images -q)"
+      system "docker stop $(docker ps -a -q)"
+      system "docker rm $(docker ps -a -q)"
+      system "docker rmi -f $(docker images -q)"
     end
   end
 
