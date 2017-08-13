@@ -6,6 +6,7 @@ RUN apk add --no-cache \
   alpine-sdk \
   tzdata \
   nodejs \
+  yarn \
   mariadb-dev \
   postgresql-dev \
   && rm -rf /var/cache/apk/*
