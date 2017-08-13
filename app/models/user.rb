@@ -33,20 +33,26 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable,
+    :authentication_keys => [:login]
 
   enum user_type: %i(sadmin admin normal)
-  validates :username, uniqueness: true, length: { minimum: 6, maximum: 20 }, on: :update, if: :update_without_username
+  validates :username, :uniqueness => {:case_sensitive => false}, length: { minimum: 6, maximum: 20 }, if: :create_user?
 
   default :user_type, 2
 
-  attr_accessor :without_username
+  attr_accessor :login
 
   def has_username?
     self.username.present?
   end
 
-  def update_without_username
-    self.without_username
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+      where(conditions.to_h).first
+    end
   end
 end

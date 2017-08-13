@@ -24,6 +24,8 @@ class IronMan::RandPhotoService < IronMan::BaseService
       message = "#{caption} #{photo}"
       channel = Json::Channel.working_channel
       IronMan::SendMessageToChannelService.new(channel, message).call
+    rescue
+      raise "IronMan::RandPhotoService is down."
     end
 
   end
