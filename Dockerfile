@@ -13,7 +13,7 @@ RUN apk add --no-cache \
 RUN npm -v
 RUN npm install -g yarn
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
-RUN gem install bundler && gem install i18n -v 0.8.6 && gem install nokogiri -v '1.8.0' && gem install pkg-config -v '~> 1.1.7'
+RUN gem install bundler && gem install i18n -v 0.8.6 && gem install nokogiri -v '1.8.0' && gem install pkg-config -v '~> 1.1.7' && gem install nio4r -v '2.1.0'
 RUN bundle config build.nokogiri --use-system-libraries
 
 ENV APP_ROOT /opt/app
