@@ -13,7 +13,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'sprockets'
 gem 'sprockets-es6'
-gem 'yarn', '~> 0.1.1'
 
 # Slack Bot
 gem 'slack-ruby-bot'
