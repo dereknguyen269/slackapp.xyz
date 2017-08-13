@@ -63,7 +63,7 @@ gem "scoped_search"
 gem 'nokogiri', '1.8.0'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.9.1'
 
 # ActiveJob
 gem 'sidekiq'
