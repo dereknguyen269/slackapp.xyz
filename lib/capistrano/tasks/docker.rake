@@ -6,6 +6,8 @@ namespace :docker do
       execute "cd #{current_path} && export DATABASE_URL=#{ENV['DATABASE_URL']}"
       execute "cd #{current_path} && export DATABASE_REMOTE=true"
       execute "cd #{current_path} && export ENABLED_BOT=true"
+      execute "cd #{current_path} && export RAILS_DB_USER=#{ENV['RAILS_DB_USER']}"
+      execute "cd #{current_path} && export RAILS_DB_PASS=#{ENV['RAILS_DB_PASS']}"
     end
   end
 
