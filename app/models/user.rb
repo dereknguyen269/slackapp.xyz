@@ -37,7 +37,7 @@ class User < ApplicationRecord
     :authentication_keys => [:login]
 
   enum user_type: %i(sadmin admin normal)
-  validates :username, :uniqueness => {:case_sensitive => false}, length: { minimum: 6, maximum: 20 }, if: :create_user?
+  validates :username, :uniqueness => {:case_sensitive => false}, length: { minimum: 6, maximum: 20 }, if: :skip_create_user
 
   default :user_type, 2
 
@@ -54,5 +54,9 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def skip_create_user
+    !new_record?
   end
 end
