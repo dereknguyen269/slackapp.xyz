@@ -484,7 +484,7 @@ DEPENDENCIES
   omniauth-instagram
   pg
   pry-rails
-  puma (~> 3.0)
+  puma (~> 3.9.1)
   pundit
   quartz
   railroady
