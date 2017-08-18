@@ -91,6 +91,8 @@ gem 'foreman'
 gem 'rspec-rails', '3.6.0'
 gem 'listen'
 
+gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
+
 group :development do
   gem 'web-console', '~> 2.3.0'
   gem "spring"
