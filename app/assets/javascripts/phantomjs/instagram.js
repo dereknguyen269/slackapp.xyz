@@ -7,6 +7,7 @@ var page          = require('webpage').create(),
     env           = system.env,
     count         = 0,
     ready         = 0,
+    postLinks     = [],
     forcedRenderTimeout,
     renderTimeout;
 
@@ -18,7 +19,10 @@ page.onInitialized = function() {
     console.log('Main page is loaded and ready');
     ready += 1;
     if (ready == 2) {
-      profileScreen();
+      // profileScreen();
+      window.setTimeout(function() {
+        tagScreen();
+      }, 30000);
     }
     if (ready == 5) {
       console.log('-----------Done-----------');
@@ -36,14 +40,14 @@ page.onInitialized = function() {
 
 page.onResourceRequested = function (req) {
   count += 1;
-  console.log('> ' + req.id + ' - ' + req.url);
+  // console.log('> ' + req.id + ' - ' + req.url);
   clearTimeout(renderTimeout);
 };
 
 page.onResourceReceived = function (res) {
   if (!res.stage || res.stage === 'end') {
     count -= 1;
-    console.log(res.id + ' ' + res.status + ' - ' + res.url);
+    // console.log(res.id + ' ' + res.status + ' - ' + res.url);
     if (count === 0) {
       renderTimeout = setTimeout(doRender, resourceWait);
     }
@@ -116,4 +120,69 @@ function profileScreen() {
       }
     });
   }, 30000);
+}
+
+function tagScreen() {
+  resourceWait  = 300;
+  maxRenderWait = 10000;
+  count = 0;
+  url = 'https://www.instagram.com/explore/tags/teengirl/';
+  page.open(url, function (status) {
+    if (status !== "success") {
+      console.log('Unable to load url');
+      phantom.exit();
+    } else {
+      setTimeout(function () {
+        page.render('tmp/phantomjs/tag-screen.png');
+        tagsScreenDetail();
+      }, maxRenderWait);
+    }
+  });
+}
+
+function tagsScreenDetail() {
+  var articles = page.evaluate(function() {
+    var postLinks = [];
+    function getCoords(box) {
+      return  {
+        x: box.left,
+        y: box.top
+      };
+    }
+
+    function getLinks() {
+      links = document.querySelectorAll('a:not([class])');
+      for(var i = 0; i < links.length; i++) {
+        postLinks.push(getCoords(links[i].getBoundingClientRect()));
+        links[i].click();
+        window.setTimeout(function() {
+          buttons = document.getElementsByTagName('button');
+          heartBtn = document.querySelectorAll('a[role="button"]')[2];
+          followBtn = buttons[0];
+          closeBtn = buttons[2];
+          textArea = document.getElementsByTagName('textarea')[1];
+          if (followBtn.textContent == "Follow") {
+            followBtn.click();
+          }
+
+          if (heartBtn.textContent == "Like") {
+            heartBtn.click();
+          }
+
+          window.setTimeout(function() {
+            closeBtn.click();
+          }, 1000);
+        }, 10000);
+      }
+      return postLinks;
+    }
+
+    return getLinks();
+  });
+
+  postLinks = articles;
+  window.setTimeout(function() {
+    page.render('tmp/phantomjs/popup-screen-1.png');
+    phantom.exit();
+  }, postLinks.length * 11000);
 }
