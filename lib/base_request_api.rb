@@ -36,24 +36,29 @@ class BaseRequestApi
     # http://endpoint.com/:address?type=payment&limit=10
   end
 
-  def init_http(method, endpoint, params, body)
+  def merged_header(header)
+    return {'Content-Type' => 'application/json'} if header.blank?
+    return {'Content-Type' => 'application/json'}.merge(header)
+  end
+
+  def init_http(method, endpoint, header, params, body)
     uri = URI.parse(current_enpoint(method, endpoint, params))
     https = Net::HTTP.new(uri.host,uri.port)
     https.use_ssl = true
     https.read_timeout = 60
-    req = Net::HTTP::Post.new(uri.request_uri, 'Content-Type' => 'application/json') if post?(method)
-    req = Net::HTTP::Get.new(uri.request_uri, 'Content-Type' => 'application/json') if get?(method)
+    req = Net::HTTP::Post.new(uri.request_uri, merged_header(header)) if post?(method)
+    req = Net::HTTP::Get.new(uri.request_uri, merged_header(header)) if get?(method)
     req.body = body.to_json
     res = https.request(req)
     res.is_a?(Net::HTTPSuccess) ? JSON.parse(res.body) : {}
   end
 
-  def json_get(endpoint, params, body = {}, mendpoint = '')
-    init_http('GET', merged_enpoint(endpoint, mendpoint), merged_params(params), body)
+  def json_get(endpoint, header = {}, params = {}, body = {}, mendpoint = '')
+    init_http('GET', merged_enpoint(endpoint, mendpoint), header, merged_params(params), body)
   end
 
-  def json_post(endpoint, params, body = {}, mendpoint = '')
-    init_http('POST', merged_enpoint(endpoint, mendpoint), merged_params(params), body)
+  def json_post(endpoint, header = {}, params = {}, body = {}, mendpoint = '')
+    init_http('POST', merged_enpoint(endpoint, mendpoint), header, merged_params(params), body)
   end
 
   private
