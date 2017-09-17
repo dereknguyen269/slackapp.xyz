@@ -1,0 +1,10 @@
+.row
+  .col-md-6.col-md-offset-3
+    .login-panel.panel.panel-default.panel-primary
+      .panel-heading
+        h3.panel-title.text-center Get Link by Slackapp.xyz
+      .panel-body
+        = simple_form_for :getlink, url: getlink_index_path, method: :post do |f|
+          .form-group
+            = f.input :url, as: :url, input_html: { class: 'form-control', placeholder: 'http://www.domain.com/xxx'}, label: false, required: true
+          = f.button :submit, 'SUBMIT', class: 'btn btn-lg btn-primary btn-block'

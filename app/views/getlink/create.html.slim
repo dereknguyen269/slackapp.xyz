@@ -1,0 +1,28 @@
+.row
+  .col-md-6.col-md-offset-3
+    .login-panel.panel.panel-primary
+      .panel-heading
+        h3.panel-title.text-center Get Link by Slackapp.xyz
+      .panel-body
+        h4 = @title
+        = image_tag @thumb, class: 'thumb-video', style: "width: 100%;" if @thumb
+        hr
+        = simple_form_for :getlink, url: getlink_index_path, method: :post do |f|
+          .form-group
+            = f.label :your_link, required: false
+            = f.input :url, as: :url, input_html: { class: 'form-control', value: @your_link, placeholder: 'http://www.domain.com/xxx'}, label: false
+          - @video.each_with_index do |video, index|
+            .form-group
+              .row
+                .col-sm-2
+                  = f.label video[:label], required: false
+                .col-sm-8
+                  = f.input "url_#{index+1}", as: :url, input_html: { class: 'form-control', value: video[:file]}, label: false, disabled: true
+                .col-sm-2.text-right
+                  button.btn.btn-sm.btn-success.btn-clipboard data-clipboard-text=(video[:file]) type="button" Copy
+          = f.button :submit, 'GET NEW LINK', class: 'btn btn-lg btn-primary btn-block'
+
+javascript:
+  $(document).on('ready page:load', function() {
+    return new Clipboard('.btn-clipboard');
+  });

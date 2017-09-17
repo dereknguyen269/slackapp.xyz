@@ -61,6 +61,7 @@ gem "scoped_search"
 
 # Crawler
 gem 'nokogiri', '1.8.0'
+gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.9.1'
