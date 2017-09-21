@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       get :callback
     end
   end
+
+  resources :getlink, default: {scope: :getlink}
 end
 
 Rails.application.routes.named_routes.tap do |routes|
